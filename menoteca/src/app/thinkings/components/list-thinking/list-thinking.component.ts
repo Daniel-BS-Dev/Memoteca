@@ -1,6 +1,6 @@
-import { ThinkingModel } from './../../model/thinking.model';
+import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, OnInit } from '@angular/core';
-import { ThinkingService } from 'src/app/service/thinking.service';
+import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 
 @Component({
   selector: 'app-list-thinking',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ThinkingModel } from 'src/app/model/thinking.model';
-import { ThinkingService } from 'src/app/service/thinking.service';
+import { ThinkingModel } from 'src/app/models/thinking.model';
+import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 
 @Component({
   selector: 'app-modal-excluir',

@@ -1,4 +1,4 @@
-import { ThinkingModel } from './../../model/thinking.model';
+import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
