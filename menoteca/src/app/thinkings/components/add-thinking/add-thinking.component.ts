@@ -24,12 +24,12 @@ export class AddThinkingComponent implements OnInit {
 
   addThinking() {
     this.service.create(this.pensamento).subscribe(() => {
-      this.router.navigate(['/thinkings'])
+      this.router.navigate(['/list-thinking'])
     })
   }
 
   canceled() {
-    this.router.navigate(['/thinkings'])
+    this.router.navigate(['/list-thinking'])
   }
 
 }

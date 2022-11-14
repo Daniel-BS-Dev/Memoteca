@@ -5,18 +5,9 @@ import { AddThinkingComponent } from './components/add-thinking/add-thinking.com
 import { ListThinkingComponent } from './components/list-thinking/list-thinking.component';
 
 const routes: Routes = [
-  {
-    path: '', component: ListThinkingComponent, children: [
-      {
-        path: 'add-thinking',
-        component: AddThinkingComponent
-      },
-      {
-        path: 'thinking/delete/:id',
-        component: ModalExcluirComponent
-      }
-    ]
-  }
+  { path: '', component: ListThinkingComponent },
+  { path: 'add', component: AddThinkingComponent },
+  { path: 'delete/:id', component: ModalExcluirComponent }
 ];
 
 @NgModule({

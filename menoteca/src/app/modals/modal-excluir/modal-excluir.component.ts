@@ -28,13 +28,13 @@ export class ModalExcluirComponent implements OnInit {
   deleteThinking() {
     if(this.pensamento.id) {
       this.service.delete(this.pensamento.id).subscribe(() => {
-        this.router.navigate(['/thinkings'])
+        this.router.navigate(['/list-thinking'])
       })
     }
   }
 
   canceled() {
-    this.router.navigate(['/thinkings'])
+    this.router.navigate(['/list-thinking'])
   }
 
 
