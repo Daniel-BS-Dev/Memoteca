@@ -13,14 +13,28 @@ export class ThinkingService {
 
   constructor(private http: HttpClient) { }
 
+  findAll(): Observable<ThinkingModel[]> {
+    return this.http.get<ThinkingModel[]>(this.backendAPI);
+  }
+
+  create(thinking: ThinkingModel): Observable<ThinkingModel> {
+    return this.http.post<ThinkingModel>(this.backendAPI, thinking);
+  }
+
+  edit(thinking: ThinkingModel): Observable<ThinkingModel> {
+    const url = `${this.backendAPI}/${thinking.id}`
+    return this.http.put<ThinkingModel>(url, thinking);
+
+  }
+
   getById(id: number): Observable<ThinkingModel> {
     const url = `${this.backendAPI}/${id}`
-    return this.http.get<ThinkingModel>(url)
+    return this.http.get<ThinkingModel>(url);
   }
 
   delete(id: number): Observable<ThinkingModel> {
     const url = `${this.backendAPI}/${id}`
-    return this.http.delete<ThinkingModel>(url)
+    return this.http.delete<ThinkingModel>(url);
   }
 
 }
