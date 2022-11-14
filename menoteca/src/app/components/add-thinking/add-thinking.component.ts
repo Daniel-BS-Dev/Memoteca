@@ -1,3 +1,4 @@
+import { ThinkingModel } from './../../model/thinking.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddThinkingComponent implements OnInit {
 
-  pensamento = {
-    id: '1',
-    conteudo: 'Aprendendo Angular',
-    autoria: 'Dev',
-    modelo: 'modelo1'
-  }
+  pensamento!: ThinkingModel
 
   constructor() { }
 

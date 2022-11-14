@@ -1,3 +1,4 @@
+import { ThinkingModel } from './../../model/thinking.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,12 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ThinkingComponent implements OnInit {
 
-  @Input() pensamento = {
-    id: '1',
-    conteudo: 'Aprendendo Angular',
-    autoria: 'Dev',
-    modelo: 'modelo1'
-  }
+  @Input() pensamento! : ThinkingModel
 
   constructor(private route: Router) { }
 
@@ -21,7 +17,7 @@ export class ThinkingComponent implements OnInit {
   }
 
   larguraPensamento(): string {
-    if(this.pensamento.conteudo.length >= 256) {
+    if(this.pensamento.description.length >= 256) {
       return 'pensamento-g'
     }
     return 'pensamento-p'
