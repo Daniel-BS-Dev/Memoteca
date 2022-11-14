@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ThinkingComponent implements OnInit {
 
-  pensamento = {
+  @Input() pensamento = {
     id: '1',
     conteudo: 'Aprendendo Angular',
     autoria: 'Dev',
@@ -20,12 +20,11 @@ export class ThinkingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  criarPensamento() {
-    alert("Novo pensamento criado!")
-  }
-
-  cancelar() {
-    this.route.navigate([''])
+  larguraPensamento(): string {
+    if(this.pensamento.conteudo.length >= 256) {
+      return 'pensamento-g'
+    }
+    return 'pensamento-p'
   }
 
 }
