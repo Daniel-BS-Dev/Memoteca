@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-thinking',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thinking.component.scss']
 })
 export class ThinkingComponent implements OnInit {
-  
+
   pensamento = {
     id: '1',
     conteudo: 'Aprendendo Angular',
@@ -14,7 +15,7 @@ export class ThinkingComponent implements OnInit {
     modelo: 'modelo1'
   }
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +25,7 @@ export class ThinkingComponent implements OnInit {
   }
 
   cancelar() {
-    alert("Ação cancelada!")
+    this.route.navigate([''])
   }
 
 }
