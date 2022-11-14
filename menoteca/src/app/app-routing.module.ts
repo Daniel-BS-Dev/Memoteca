@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddThinkingComponent } from './components/add-thinking/add-thinking.component';
 import { ListThinkingComponent } from './components/list-thinking/list-thinking.component';
-import { ThinkingComponent } from './components/thinking/thinking.component';
 
 const routes: Routes = [
     {
@@ -15,7 +15,7 @@ const routes: Routes = [
     },
     {
         path: 'add-thinking',
-        component: ThinkingComponent
+        component: AddThinkingComponent
     }
 ];
 
