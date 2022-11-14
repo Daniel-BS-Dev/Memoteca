@@ -1,5 +1,6 @@
 import { ThinkingModel } from './../../model/thinking.model';
 import { Component, OnInit } from '@angular/core';
+import { ThinkingService } from 'src/app/service/thinking.service';
 
 @Component({
   selector: 'app-list-thinking',
@@ -8,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListThinkingComponent implements OnInit {
 
-  listaPensamentos! : ThinkingModel[]
+  listThinking! : ThinkingModel[]
 
-  constructor() { }
+  constructor(private service: ThinkingService) { }
 
   ngOnInit(): void {
+    this.service.findAll().subscribe((el: ThinkingModel[]) => {
+      this.listThinking = el;
+    })
   }
 
 }
