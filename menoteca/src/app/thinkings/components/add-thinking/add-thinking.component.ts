@@ -1,7 +1,7 @@
 import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, OnInit } from '@angular/core';
 import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-thinking',
@@ -10,20 +10,28 @@ import { Router } from '@angular/router';
 })
 export class AddThinkingComponent implements OnInit {
 
-  pensamento: ThinkingModel = {
+  thinking: ThinkingModel = {
     id: 0,
     description: '',
     author: '',
     module: ''
   }
 
-  constructor(private service: ThinkingService, private router: Router) { }
+  constructor(private service: ThinkingService, private router: Router,
+    private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    let url = this.activeRoute.snapshot.url[0].path;
+    if (url === 'edit') {
+      const id = this.activeRoute.snapshot.paramMap.get('id');
+      this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
+        this.thinking = el
+      })
+    }
   }
 
   addThinking() {
-    this.service.create(this.pensamento).subscribe(() => {
+    this.service.create(this.thinking).subscribe(() => {
       this.router.navigate(['/list-thinking'])
     })
   }

@@ -2,50 +2,8 @@
   "Thinkings": [
     {
       "id": 1,
-      "description": "Passo informações para o componente filho",
-      "author": "Componente pai",
-      "module": "modelo3"
-    },
-    {
-      "id": 3,
-      "description": "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Diuretics paradis num copo é motivis de denguis. Atirei o pau no gatis, per gatis num morreus. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Sapien in monti palavris qui num significa nadis i pareci latim.",
-      "author": "",
-      "module": "modelo1"
-    },
-    {
-      "id": 5,
-      "description": "danie",
-      "author": "teste",
-      "module": "modelo2"
-    },
-    {
-      "id": 6,
-      "description": "Eu amo programar ",
-      "author": "Daniel",
-      "module": "modelo3"
-    },
-    {
-      "id": 7,
-      "description": "Daniel vai pra casa de joao agora por que eu não sei se da pra ficar em casa por conta de muitas coisas que não consigo entender",
-      "author": "Silva",
-      "module": "modelo1"
-    },
-    {
-      "id": 8,
-      "description": "tetste teste teste trst etsst etsvz tes zt evtst tete te  e e r  re  s  d  r ew  er  ty fr de rty t re rt y fr t y r4 ed fg t r e rf gy f d frf gy t r f g hy  t r drf g hy t rft g h f gt y tr fg h  yt y   gy g  h  gh  fr 5 ed f g",
-      "author": "Pedro",
-      "module": "modelo1"
-    },
-    {
-      "id": 9,
-      "description": "Eu só quero testar mesmo",
-      "author": "Jose",
-      "module": "modelo2"
-    },
-    {
-      "id": 10,
-      "description": "ffffffffffffff ttttttttttttttttttttttttttttttttttttt gggg gggg hhhh hh hhhhh hhhh hhhh hhh",
-      "author": "",
+      "description": "daniel",
+      "author": "Benedito",
       "module": "modelo2"
     }
   ]
