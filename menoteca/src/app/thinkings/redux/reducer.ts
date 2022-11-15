@@ -9,6 +9,11 @@ const _thinkingReducer = createReducer(
     thinkings: [...payload].reverse(),
     error: '',
   })),
+
+  on(formThinkingActions.LoadThinkingsFail, (state, { error }) => ({
+    ...state,
+    error: error,
+  })),
 );
 
 export function thinkingReducer(state = initialState, action: Action) {

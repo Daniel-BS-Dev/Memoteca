@@ -18,6 +18,6 @@ export const LoadThinkingsSuccess = createAction(
 
 export const LoadThinkingsFail = createAction(
   thinkingTypeAction.LOAD_THINKINGS_FAIL,
-  props<{ payload: string }>()
+  props<{ error: string }>()
 );
 

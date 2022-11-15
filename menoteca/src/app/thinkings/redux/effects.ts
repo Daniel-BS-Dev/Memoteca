@@ -17,7 +17,7 @@ export class ThinkingEffects {
           map((payload: ThinkingModel[]) =>
             formThinkingTypeActions.LoadThinkingsSuccess({ payload })
           ),
-          catchError((error) => of(formThinkingTypeActions.LoadThinkingsFail({ payload: error })))
+          catchError((error) => of(formThinkingTypeActions.LoadThinkingsFail({ error: 'Ocorreu um erro' })))
         )
       )
     )
