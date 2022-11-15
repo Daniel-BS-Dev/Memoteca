@@ -18,7 +18,7 @@ export class ThinkingComponent implements OnInit {
 
   get thinkingDescription() {
     let lengthDescription = this.thinking.description;
-    const LIMIT = 75;
+    const LIMIT = 70;
 
     if (lengthDescription.length > LIMIT) {
       return lengthDescription.substring(0, LIMIT).trimEnd() + '...';

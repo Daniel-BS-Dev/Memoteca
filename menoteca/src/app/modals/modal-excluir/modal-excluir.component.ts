@@ -11,7 +11,7 @@ import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 })
 export class ModalExcluirComponent implements OnInit {
 
-  pensamento!: ThinkingModel
+thinking!: ThinkingModel
 
   constructor(
     private service: ThinkingService,
@@ -23,13 +23,13 @@ export class ModalExcluirComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
     this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
-      this.pensamento = el
+      this.thinking = el
     })
   }
 
   deleteThinking() {
-    if(this.pensamento.id) {
-      this.service.delete(this.pensamento.id).subscribe(() => {
+    if(this.thinking.id) {
+      this.service.delete(this.thinking.id).subscribe(() => {
         this.router.navigate(['/list-thinking'])
         this.toast.success('Pensamento removido com sucesso.')
       })
