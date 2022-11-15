@@ -13,7 +13,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ModalViewThinkingComponent implements OnInit {
 
-  thinkingList$: Observable<ThinkingModel | null> = this.store$.select(fromThinkingSelectors.getThinking);
+  thinking$: Observable<ThinkingModel | null> = this.store$.select(fromThinkingSelectors.getThinking);
 
   constructor( private store$: Store,
     public dialogRef: MatDialogRef<ModalViewThinkingComponent>) { }

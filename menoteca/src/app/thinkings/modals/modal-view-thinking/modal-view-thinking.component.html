@@ -1,4 +1,4 @@
-<div class="overlay" *ngIf="(thinkingList$ | async) as thinking">
+<div class="overlay" *ngIf="(thinking$ | async) as thinking">
   <section class="thinking {{ thinking.module }} ff-roboto-mono">
     <div class="container-info">
       <img src="/assets/images/{{ thinking.module }}.png" alt="Aspas coloridas">

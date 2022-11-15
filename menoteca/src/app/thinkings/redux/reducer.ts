@@ -36,6 +36,27 @@ const _thinkingReducer = createReducer(
     ...state,
     error: error,
   })),
+
+  on(formThinkingActions.UpdateThinking, (state, { payload }) => ({
+    ...state,
+    users: [...state.thinkings].map((row) => {
+      if (row.id === payload.id) {
+        return payload;
+      } else {
+        return row;
+      }
+    }),
+  })),
+
+  on(formThinkingActions.UpdateThinkingFail, (state, { error }) => ({
+    ...state,
+    error: error,
+  })),
+
+  on(formThinkingActions.ClearForm, (state, { payload }) => ({
+    ...state,
+    edit: payload,
+  })),
 );
 
 export function thinkingReducer(state = initialState, action: Action) {

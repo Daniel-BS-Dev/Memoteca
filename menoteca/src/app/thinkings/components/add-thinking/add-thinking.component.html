@@ -1,6 +1,6 @@
 <section class="add-thinking ff-inter">
   <header class="container-title">
-    <h2 class="title">{{ url === 'edit' ? 'Atualize o seu Pensamento:' : 'Adicione um novo pensamento:' }}</h2>
+    <h2 class="title">{{ edit ? 'Atualize o seu Pensamento:' : 'Adicione um novo pensamento:' }}</h2>
   </header>
   <form #form="ngForm" [formGroup]="thinkingForm">
     <label for="autoria">Autoria ou fonte</label>

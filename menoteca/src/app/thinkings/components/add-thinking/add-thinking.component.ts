@@ -1,9 +1,13 @@
+
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import * as formsValidation from 'src/app/utils/utilitaries-functions';
 import * as fromThinkingActions from '../../redux/action';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
+import { ThinkingModel } from 'src/app/models/thinking.model';
+import * as fromThinkingSelectors from '../../redux/selector';
 
 @Component({
   selector: 'app-add-thinking',
@@ -12,7 +16,10 @@ import { Location } from '@angular/common';
 })
 export class AddThinkingComponent implements OnInit {
 
-  url: any = '';
+  thinking$: Observable<ThinkingModel | null> = this.store$.select(fromThinkingSelectors.getThinking);
+  edit$: Observable<boolean> = this.store$.select(fromThinkingSelectors.editThinking);
+
+  edit: boolean = false;
   thinkingForm!: FormGroup;
 
   get description() {
@@ -40,21 +47,23 @@ export class AddThinkingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.url = this.activeRoute.snapshot.url[0].path;
+    this.edit$.subscribe(el => {
+      this.edit = el
+    });
 
-    // if (this.url === 'edit') {
-    //   const id = this.activeRoute.snapshot.paramMap.get('id');
+    if (this.edit) {
+      this.thinking$.subscribe((el: any) => {
+        this.thinkingForm.patchValue({
+          id: el.id,
+          description: el.description,
+          author: el.author,
+          module: el.module,
+          update: true
+        });
 
-    // this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
-    //   this.thinkingForm.patchValue({
-    //     id: el.id,
-    //     description: el.description,
-    //     author: el.author,
-    //     module: el.module,
-    //     update: true
-    //   });
-    // })
-    //}
+        this.edit = true;
+      });
+    }
   }
 
   chooseModule(value: any) {
@@ -68,15 +77,15 @@ export class AddThinkingComponent implements OnInit {
       return;
     }
 
-    this.store$.dispatch(fromThinkingActions.CreateThinking({ payload: this.thinkingForm.value }))
+    if (this.edit) {
+      this.store$.dispatch(fromThinkingActions.UpdateThinking({ payload: this.thinkingForm.value }));
+      
+      this.canceled();
+      return;
+    }
+
+    this.store$.dispatch(fromThinkingActions.CreateThinking({ payload: this.thinkingForm.value }));
     this.canceled();
-    // if (this.url === 'edit') {
-    //   this.service.edit(this.thinkingForm.value).subscribe(() => {
-    //     this.toast.success('Pensamento atualizado com sucesso.');
-    //     this.router.navigate(['/list-thinking']);
-    //   });
-    //   return;
-    // }
   }
 
   validFielForm(field: any, form: any) {

@@ -49,37 +49,71 @@ export class ThinkingEffects {
   );
 
   CreateThinking$ = createEffect((): any =>
-  this.action$.pipe(
-    ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING),
-    exhaustMap((refresh: any) =>
-      this.service.create(refresh.payload).pipe(
-        map((payload: ThinkingModel) =>
-        fromThinkingTypeActions.CreateThinkingSuccess(),
-          catchError(() => of(fromThinkingTypeActions.CreateThinkingFail({ error: 'Ocorreu um erro' })))
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING),
+      exhaustMap((refresh: any) =>
+        this.service.create(refresh.payload).pipe(
+          map(() =>
+            fromThinkingTypeActions.CreateThinkingSuccess(),
+            catchError(() => of(fromThinkingTypeActions.CreateThinkingFail({ error: 'Ocorreu um erro' })))
+          )
         )
       )
     )
-  )
-);
+  );
 
-successCreateThinking$ = createEffect(() =>
-this.action$.pipe(
-  ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING_SUCCESS),
-  tap(() => {
-    this.toastr.success('Pensamento adicionado com sucesso.');
-  })),
+  successCreateThinking$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING_SUCCESS),
+      tap(() => {
+        this.toastr.success('Pensamento adicionado com sucesso.');
+      })),
 
-{ dispatch: false }
-);
+    { dispatch: false }
+  );
 
-errorCreateThinking$ = createEffect(() =>
-this.action$.pipe(
-  ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING_FAIL),
-  tap((error: any) => {
-    this.toastr.error(error.error);
-  })),
+  errorCreateThinking$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING_FAIL),
+      tap((error: any) => {
+        this.toastr.error(error.error);
+      })),
 
-{ dispatch: false }
-);
+    { dispatch: false }
+  );
+
+  UpdateThinking$ = createEffect((): any =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.UPDATE_THINKING),
+      exhaustMap((refresh: any) =>
+        this.service.edit(refresh.payload).pipe(
+          map(() =>
+            fromThinkingTypeActions.UpdateThinkingSuccess(),
+            catchError(() => of(fromThinkingTypeActions.UpdateThinkingFail({ error: 'Ocorreu um erro' })))
+          )
+        )
+      )
+    )
+  );
+
+  successUpdateThinking$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.UPDATE_THINKING_SUCCESS),
+      tap(() => {
+        this.toastr.success('Pensamento atualizado com sucesso.');
+      })),
+
+    { dispatch: false }
+  );
+
+  errorUpdateThinking$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING_FAIL),
+      tap((error: any) => {
+        this.toastr.error(error.error);
+      })),
+
+    { dispatch: false }
+  );
 
 }

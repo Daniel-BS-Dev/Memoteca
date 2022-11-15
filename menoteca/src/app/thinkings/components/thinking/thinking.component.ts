@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as fromThinkingAction from '../../redux/action';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalViewThinkingComponent } from 'src/app/thinkings/modals/modal-view-thinking/modal-view-thinking.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-thinking',
@@ -14,7 +15,8 @@ export class ThinkingComponent implements OnInit {
 
   @Input() thinking!: ThinkingModel
 
-  constructor(private store$: Store, private dialog: MatDialog) { }
+  constructor(private store$: Store, private dialog: MatDialog,
+    private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +36,13 @@ export class ThinkingComponent implements OnInit {
     this.store$.dispatch(fromThinkingAction.LoadThinkingSuccess({ payload: thinking }));
 
     this.dialog.open(ModalViewThinkingComponent);
+  }
+
+  editThinking(thinking: ThinkingModel) {
+    this.store$.dispatch(fromThinkingAction.LoadThinkingSuccess({ payload: thinking }));
+    this.store$.dispatch(fromThinkingAction.ClearForm({ payload: true }));
+
+    this.route.navigate(['/list-thinking/add']);
   }
 
 }
