@@ -25,6 +25,17 @@ const _thinkingReducer = createReducer(
     ...state,
     error: error,
   })),
+
+  on(formThinkingActions.CreateThinking, (state, { payload }) => ({
+    ...state,
+    users: [...state.thinkings, payload],
+    error: '',
+  })),
+
+  on(formThinkingActions.CreateThinkingFail, (state, { error }) => ({
+    ...state,
+    error: error,
+  })),
 );
 
 export function thinkingReducer(state = initialState, action: Action) {

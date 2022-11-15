@@ -1,10 +1,9 @@
-import { ThinkingModel } from 'src/app/models/thinking.model';
+import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import * as formsValidation from 'src/app/utils/utilitaries-functions';
+import * as fromThinkingActions from '../../redux/action';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-thinking',
@@ -28,8 +27,8 @@ export class AddThinkingComponent implements OnInit {
     return this.thinkingForm.get('module')!;
   }
 
-  constructor(private service: ThinkingService, private router: Router, private formBuilder: FormBuilder,
-    private activeRoute: ActivatedRoute, private toast: ToastrService) {
+  constructor(private store$: Store, private location: Location,
+    private formBuilder: FormBuilder) {
     this.thinkingForm = this.formBuilder.group({
       id: '',
       description: ['', [formsValidation.verificarCampoVazio]],
@@ -41,21 +40,21 @@ export class AddThinkingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.url = this.activeRoute.snapshot.url[0].path;
+    // this.url = this.activeRoute.snapshot.url[0].path;
 
-    if (this.url === 'edit') {
-      const id = this.activeRoute.snapshot.paramMap.get('id');
+    // if (this.url === 'edit') {
+    //   const id = this.activeRoute.snapshot.paramMap.get('id');
 
-      // this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
-      //   this.thinkingForm.patchValue({
-      //     id: el.id,
-      //     description: el.description,
-      //     author: el.author,
-      //     module: el.module,
-      //     update: true
-      //   });
-      // })
-    }
+    // this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
+    //   this.thinkingForm.patchValue({
+    //     id: el.id,
+    //     description: el.description,
+    //     author: el.author,
+    //     module: el.module,
+    //     update: true
+    //   });
+    // })
+    //}
   }
 
   chooseModule(value: any) {
@@ -69,26 +68,22 @@ export class AddThinkingComponent implements OnInit {
       return;
     }
 
-    if (this.url === 'edit') {
-      this.service.edit(this.thinkingForm.value).subscribe(() => {
-        this.toast.success('Pensamento atualizado com sucesso.');
-        this.router.navigate(['/list-thinking']);
-      });
-      return;
-    }
-
-    this.service.create(this.thinkingForm.value).subscribe(() => {
-      this.toast.success('Pensamento adicionado com sucesso.');
-      this.router.navigate(['/list-thinking']);
-    })
-  }
-
-  canceled() {
-    this.router.navigate(['/list-thinking']);
+    this.store$.dispatch(fromThinkingActions.CreateThinking({ payload: this.thinkingForm.value }))
+    this.canceled();
+    // if (this.url === 'edit') {
+    //   this.service.edit(this.thinkingForm.value).subscribe(() => {
+    //     this.toast.success('Pensamento atualizado com sucesso.');
+    //     this.router.navigate(['/list-thinking']);
+    //   });
+    //   return;
+    // }
   }
 
   validFielForm(field: any, form: any) {
     return field.errors?.['campoVazio'] && form.submitted;
   }
+
+  canceled = () =>
+    this.location.back();
 
 }
