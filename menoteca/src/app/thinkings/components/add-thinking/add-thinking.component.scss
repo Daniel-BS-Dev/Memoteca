@@ -1,55 +1,56 @@
-.acoes {
+.add-thinking {
+  padding: 1em 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-}
-
-.botao {
-  margin: 5px;
-  margin-top: 70px;
-  width: 200px;
-}
-
-.criar-pensamentos {
-  padding: 2rem 0;
-}
-
-.criar-pensamentos form {
-  background: #C4EDFF;
-
-  border: none;
-  border-radius: 20px;
-
-  display: flex;
   flex-direction: column;
 
-  padding: 2rem;
-}
+  .container-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
 
-.criar-pensamentos form label {
-  color: #154580;
-  font-weight: bold;
-  margin: 0 0 1rem;
-}
+    .title {
+      width: 250px;
+      font-size: 1.5em;
+    }
+  }
 
-.criar-pensamentos form .input {
-  border: none;
-  height: 40px;
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  margin: 0.5rem 0 2rem;
-}
+  form {
+    width: 450px;
+    background: #c4edff;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 0.5rem;
 
+    label {
+      color: #154580;
+      font-weight: bold;
+      margin: 0 0 0.3rem;
+    }
 
-.criar-pensamentos form .textarea {
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  margin: 0.5rem 0 2rem;
+    .input {
+      border: none;
+      height: 30px;
+      padding: 0.5rem;
+      border-radius: 10px;
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    textarea {
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 1.5em;
+    }
+  }
 }
 
 .container-radio {
+  margin-top: 1em;
   display: flex;
   gap: 2.5rem;
   flex-wrap: wrap;
@@ -58,11 +59,10 @@
 .modelos {
   display: flex;
   gap: 2.5rem;
-  border: 1px solid red;
 }
 
 .modelo {
-  background-color: #F8F9FE;
+  background-color: #f8f9fe;
   padding: 1rem;
   max-width: 250px;
   margin: 1rem 0 2rem;
@@ -86,14 +86,14 @@
 }
 
 .modelo2 {
-  box-shadow: 8px 8px 0px #6BD1FF;
+  box-shadow: 8px 8px 0px #6bd1ff;
 }
 
 .modelo3 {
-  box-shadow: 8px 8px 0px #84EEC1;
+  box-shadow: 8px 8px 0px #84eec1;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   display: none;
 }
 
@@ -101,12 +101,13 @@ input[type='radio'] {
   display: flex;
   align-items: center;
   column-gap: 20px;
+  padding-bottom: 1.5em;
 }
 
 .custom-radio {
   border: 1px solid #154580;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: grid;
   place-content: center;
   border-radius: 50%;
@@ -119,17 +120,43 @@ span {
 }
 
 .custom-radio span {
-  content: '';
+  content: "";
   width: 18px;
   height: 18px;
   background: transparent;
   border-radius: 50%;
 }
 
-input[type='radio']:checked+.custom-radio {
+input[type="radio"]:checked + .custom-radio {
   border-color: #154580;
 }
 
-input[type='radio']:checked+.custom-radio span {
+input[type="radio"]:checked + .custom-radio span {
   background: #154580;
+}
+
+.button-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.button {
+  margin: 5px;
+  margin-top: 10px;
+  width: 140px;
+}
+
+@media (min-width: 500px) {
+  .add-thinking {
+    form {
+      padding: 2rem;
+    }
+  }
+
+  .button {
+    margin-top: 20px;
+    width: 200px;
+  }
 }

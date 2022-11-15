@@ -1,26 +1,27 @@
-<section class="container criar-pensamentos ff-inter">
-  <header class="header">
-    <h2>Adicione um <br>pensamento novo:</h2>
+<section class="add-thinking ff-inter">
+  <header class="container-title">
+    <h2 class="title">Adicione um novo pensamento:</h2>
   </header>
   <form>
-    <label for="pensamento">Pensamento</label>
-    <input
-      type="textarea"
-      class="input"
-      id="pensamento"
-      name="pensamento"
-      placeholder="Digite o pensamento"
-      [(ngModel)]="pensamento.description"
-    >
     <label for="autoria">Autoria ou fonte</label>
     <input
-      type="text"
-      class="input"
-      id="autoria"
-      name="autoria"
-      placeholder="Digite a autoria ou fonte"
-      [(ngModel)]="pensamento.author"
+    type="text"
+    class="input"
+    id="autoria"
+    name="autoria"
+    placeholder="Digite a autoria ou fonte"
+    [(ngModel)]="pensamento.author"
+    autofocus
     >
+    <label for="pensamento">Pensamento</label>
+    <textarea
+      type="textarea"
+      id="pensamento"
+      name="pensamento"
+      rows="5" cols="33"
+      placeholder="Digite o pensamento..."
+      [(ngModel)]="pensamento.description"
+    ></textarea>
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
@@ -89,9 +90,9 @@
         </div>
       </div>
     </div>
-    <div class="acoes">
-      <button (click)="addThinking()" class="botao">Salvar</button>
-      <button (click)="canceled()" routerLink="/list-thinking" class="botao">Cancelar</button>
+    <div class="button-actions">
+      <button (click)="addThinking()" class="button">Salvar</button>
+      <button (click)="canceled()" routerLink="/list-thinking" class="button">Cancelar</button>
     </div>
   </form>
 </section>
