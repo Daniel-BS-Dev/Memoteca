@@ -22,20 +22,7 @@ h2 {
   text-align: center;
 }
 
-.header {
-  margin: 1rem auto 2rem;
-}
-
-.container {
-  padding-right: 1rem;
-  padding-left: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.botao {
+.button {
   background: #154580;
   color: #ffffff;
   max-width: 270px;
@@ -47,28 +34,9 @@ h2 {
   transition: 0.5s ease;
 }
 
-.botao:hover {
+.button:hover {
   border: 2px solid #84EEC1;
   color: #84EEC1;
 }
 
-@media (min-width: 576px) {
-  .container {
-      width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-      width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-      width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-      width: 1140px;
-  }
-}
+

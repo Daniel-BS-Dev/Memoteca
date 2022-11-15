@@ -9,18 +9,22 @@ import { Router } from '@angular/router';
 })
 export class ThinkingComponent implements OnInit {
 
-  @Input() pensamento! : ThinkingModel
+  @Input() thinking!: ThinkingModel
 
-  constructor(private route: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  larguraPensamento(): string {
-    if(this.pensamento.description.length >= 256) {
-      return 'pensamento-g'
+  get thinkingDescription() {
+    let lengthDescription = this.thinking.description;
+    const LIMIT = 75;
+
+    if (lengthDescription.length > LIMIT) {
+      return lengthDescription.substring(0, LIMIT).trimEnd() + '...';
     }
-    return 'pensamento-p'
+
+    return lengthDescription;
   }
 
 }

@@ -1,17 +1,16 @@
-
 <section class="container">
-  <header class="header d-flex">
+  <header class="d-flex">
     <h2 class="ff-inter">Meu Mural</h2>
-    <button routerLink="/list-thinking/add" class="botao">Adicionar pensamento</button>
+    <button routerLink="/list-thinking/add" class="button">Adicionar pensamento</button>
   </header>
   <div class="mural" *ngIf="listThinking?.length, else notThinkings">
     <div *ngFor="let thinking of listThinking">
-      <app-thinking [pensamento]="thinking"></app-thinking>
+      <app-thinking [thinking]="thinking"></app-thinking>
     </div>
   </div>
 </section>
 <ng-template #notThinkings>
-  <div class="ff-inter sem-pensamentos">
+  <div class="ff-inter not-thinkings">
     <p>Ainda não há pensamentos cadastrados!</p>
   </div>
 </ng-template>
