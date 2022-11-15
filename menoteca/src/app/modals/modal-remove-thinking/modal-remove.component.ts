@@ -5,11 +5,11 @@ import { ThinkingModel } from 'src/app/models/thinking.model';
 import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 
 @Component({
-  selector: 'app-modal-excluir',
-  templateUrl: './modal-excluir.component.html',
-  styleUrls: ['./modal-excluir.component.scss']
+  selector: 'app-modal-remove',
+  templateUrl: './modal-remove.component.html',
+  styleUrls: ['./modal-remove.component.scss']
 })
-export class ModalExcluirComponent implements OnInit {
+export class ModalRemoveComponent implements OnInit {
 
 thinking!: ThinkingModel
 

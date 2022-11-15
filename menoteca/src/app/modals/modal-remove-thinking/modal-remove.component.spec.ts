@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalExcluirComponent } from './modal-excluir.component';
+import { ModalRemoveComponent } from './modal-remove.component';
 
 describe('ModalExcluirComponent', () => {
-  let component: ModalExcluirComponent;
-  let fixture: ComponentFixture<ModalExcluirComponent>;
+  let component: ModalRemoveComponent;
+  let fixture: ComponentFixture<ModalRemoveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalExcluirComponent ]
+      declarations: [ ModalRemoveComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ModalExcluirComponent);
+    fixture = TestBed.createComponent(ModalRemoveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

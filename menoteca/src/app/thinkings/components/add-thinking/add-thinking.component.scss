@@ -9,7 +9,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 1em;
 
     .title {
       width: 250px;
@@ -97,11 +96,8 @@ input[type="radio"] {
   display: none;
 }
 
-.radio-modelo label {
-  display: flex;
-  align-items: center;
-  column-gap: 20px;
-  padding-bottom: 1.5em;
+.radio-modelo {
+  cursor: pointer;
 }
 
 .custom-radio {
@@ -159,4 +155,12 @@ input[type="radio"]:checked + .custom-radio span {
     margin-top: 20px;
     width: 200px;
   }
+}
+
+.is-invalid {
+  border: solid red !important;
+}
+
+.is-invalid::placeholder {
+  color: red !important
 }

@@ -15,7 +15,7 @@ export class ListThinkingComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.findAll().subscribe((el: ThinkingModel[]) => {
-      this.listThinking = el;
+      this.listThinking = el.reverse();
     })
   }
 

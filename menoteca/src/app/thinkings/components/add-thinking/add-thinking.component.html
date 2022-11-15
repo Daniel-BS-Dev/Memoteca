@@ -2,93 +2,46 @@
   <header class="container-title">
     <h2 class="title">{{ url === 'edit' ? 'Atualize o seu Pensamento:' : 'Adicione um novo pensamento:' }}</h2>
   </header>
-  <form>
+  <form #form="ngForm" [formGroup]="thinkingForm">
     <label for="autoria">Autoria ou fonte</label>
-    <input
-    type="text"
-    class="input"
-    id="autoria"
-    name="autoria"
-    placeholder="Digite a autoria ou fonte"
-    [(ngModel)]="thinking.author"
-    autofocus
-    >
+    <input type="text" class="input" id="autoria" name="autoria" placeholder="Digite a autoria ou fonte"
+      formControlName="author" autofocus [class.is-invalid]="validFielForm(author, form)">
+    <div *ngIf="validFielForm(author, form)" style="margin-top: -15px; color:red">
+      <p>Campo é obrigatório.</p>
+    </div>
+
     <label for="pensamento">Pensamento</label>
-    <textarea
-      type="textarea"
-      id="pensamento"
-      name="pensamento"
-      rows="5" cols="33"
-      placeholder="Digite o Pensamento..."
-      [(ngModel)]="thinking.description"
-    ></textarea>
+    <textarea type="textarea" id="pensamento" name="pensamento" rows="5" cols="33" placeholder="Digite o Pensamento..."
+      formControlName="description" [ngClass]="{'is-invalid':validFielForm(description, form)}"></textarea>
+    <div *ngIf="validFielForm(description, form)" style="margin-top: -15px; color:red">
+      <p>Campo é obrigatório.</p>
+    </div>
+
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
-      <div class="radio-modelo">
-        <label for="modelo1">
-          <input
-            type="radio"
-            id="modelo1"
-            value="modelo1"
-            name="modelo-card"
-            [(ngModel)]="thinking.module"
-          >
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 1</span>
-        </label>
-        Prévia:
+      <div class="radio-modelo" (click)="chooseModule('modelo1')">
+        {{ module.value === 'modelo1' ? 'Modelo Selecionado:' : 'Prévia 1:' }}
         <div class="modelo modelo1 ff-roboto-mono">
           <img src="../../../../assets/images/modelo1.png" alt="Aspas azuis">
-          <p class="description">{{ thinking.description }}</p>
-          <p class="autoria"><b>{{ thinking.author }}</b></p>
         </div>
       </div>
 
-      <div class="radio-modelo">
-        <label for="modelo2">
-          <input
-            type="radio"
-            id="modelo2"
-            value="modelo2"
-            name="modelo-card"
-            [(ngModel)]="thinking.module"
-          >
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 2</span>
-        </label>
-        Prévia:
+      <div class="radio-modelo" (click)="chooseModule('modelo2')">
+        {{ module.value === 'modelo2' ? 'Modelo Selecionado:' : 'Prévia 2:' }}
         <div class="modelo modelo2 ff-roboto-mono">
           <img src="../../../../assets/images/modelo2.png" alt="Aspas azul claro">
-          <p class="description">{{ thinking.description }}</p>
-          <p class="autoria"><b>{{ thinking.author }}</b></p>
         </div>
       </div>
 
-      <div class="radio-modelo">
-        <label for="modelo3">
-          <input
-            type="radio"
-            id="modelo3"
-            value="modelo3"
-            name="modelo-card"
-            [(ngModel)]="thinking.module"
-          >
-          <div class="custom-radio">
-            <span></span>
-          </div>
-          <span>Modelo 3</span>
-        </label>
-        Prévia:
+      <div class="radio-modelo" (click)="chooseModule('modelo3')">
+        {{ module.value === 'modelo3' ? 'Modelo Selecionado:' : 'Prévia 3:' }}
         <div class="modelo modelo3 ff-roboto-mono">
           <img src="../../../../assets/images/modelo3.png" alt="Aspas verdes">
-          <p class="autoria"><b>{{ thinking.author }}</b></p>
-          <p class="description">{{ thinking.description }}</p>
         </div>
       </div>
+    </div>
+    <div *ngIf="validFielForm(module, form)" style="margin-top: -15px; color:red">
+      <p><strong>Atenção:</strong> Você deve Escolhe um modelo.</p>
     </div>
     <div class="button-actions">
       <button (click)="addThinking()" class="button">Salvar</button>
