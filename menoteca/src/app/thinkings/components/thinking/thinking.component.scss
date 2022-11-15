@@ -8,6 +8,16 @@
   justify-content: space-between;
 }
 
+.container-info{
+  position: relative;
+
+  .date{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+
 .button-actions {
   display: flex;
   justify-content: flex-end;

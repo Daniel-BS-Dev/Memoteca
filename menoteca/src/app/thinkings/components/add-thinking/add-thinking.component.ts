@@ -16,7 +16,8 @@ export class AddThinkingComponent implements OnInit {
     id: 0,
     description: '',
     author: '',
-    module: ''
+    module: '',
+    date: Date.now().toString()
   }
 
   constructor(private service: ThinkingService, private router: Router,
