@@ -13,7 +13,7 @@ export const LoadThinkings = createAction(
 
 export const LoadThinkingsSuccess = createAction(
   thinkingTypeAction.LOAD_THINKINGS_SUCCESS,
-  props<{ payload: ThinkingModel }>()
+  props<{ payload: ThinkingModel[] }>()
 );
 
 export const LoadThinkingsFail = createAction(

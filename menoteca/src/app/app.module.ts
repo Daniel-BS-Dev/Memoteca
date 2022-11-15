@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ModalViewThinkingComponent } from './modals/modal-view-thinking/modal-view-thinking.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,6 @@ import { EffectsModule } from '@ngrx/effects';
     HeaderComponent,
     FooterComponent,
     ModalViewThinkingComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -30,6 +30,7 @@ import { EffectsModule } from '@ngrx/effects';
     ToastrModule.forRoot(),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({}),
   ],
   providers: [],
   bootstrap: [AppComponent]

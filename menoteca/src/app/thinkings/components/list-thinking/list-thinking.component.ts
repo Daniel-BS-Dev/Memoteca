@@ -1,6 +1,9 @@
 import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, OnInit } from '@angular/core';
-import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
+import { Observable, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as thinkingSelectors from '../../redux/selector';
+import * as thinkingsActions from '../../redux/action';
 
 @Component({
   selector: 'app-list-thinking',
@@ -9,14 +12,12 @@ import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 })
 export class ListThinkingComponent implements OnInit {
 
-  listThinking! : ThinkingModel[]
+  thinkingsList$: Observable<ThinkingModel[]> = this.store.select(thinkingSelectors.getAllThikings);
 
-  constructor(private service: ThinkingService) { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.service.findAll().subscribe((el: ThinkingModel[]) => {
-      this.listThinking = el.reverse();
-    })
+    this.store.dispatch(thinkingsActions.LoadThinkings());
   }
 
 }
