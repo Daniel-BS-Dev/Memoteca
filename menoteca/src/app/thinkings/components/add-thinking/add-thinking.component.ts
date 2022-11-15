@@ -17,7 +17,8 @@ export class AddThinkingComponent implements OnInit {
     description: '',
     author: '',
     module: '',
-    date: Date.now().toString()
+    date: Date.now().toString(),
+    update: false
   }
 
   constructor(private service: ThinkingService, private router: Router,
@@ -36,7 +37,7 @@ export class AddThinkingComponent implements OnInit {
 
   addThinking() {
     if (this.url === 'edit') {
-      this.service.edit(this.thinking).subscribe(() => {
+      this.service.edit({...this.thinking, update:true}).subscribe(() => {
         this.toast.success('Pensamento atualizado com sucesso.');
         this.router.navigate(['/list-thinking']);
       });

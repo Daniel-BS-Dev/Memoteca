@@ -3,5 +3,6 @@ export interface ThinkingModel {
   description: string,
   author: string,
   module: string,
-  date: string
+  date: string,
+  update: boolean
 }

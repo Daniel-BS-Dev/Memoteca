@@ -1,7 +1,10 @@
 <section class="thinking {{ thinking.module }} ff-roboto-mono">
   <div class="container-info">
     <img src="/assets/images/{{ thinking.module }}.png" alt="Aspas coloridas">
-    <p class="date"> {{ thinking.date | date: "dd/MM/yyyy 'às' HH:mm" }}</p>
+    <div class="date">
+      <p> {{ thinking.date | date: "dd/MM/yyyy 'às' HH:mm" }}</p>
+      <em *ngIf="thinking.update">Atualizada</em>
+    </div>
     <p class="autoria"><b>{{ thinking.author }}</b></p>
     <p class="description">{{ thinkingDescription }}</p>
   </div>

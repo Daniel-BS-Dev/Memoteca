@@ -5,21 +5,24 @@
       "description": "date",
       "author": "teste",
       "module": "modelo1",
-      "date": "1668485609867"
+      "date": "1668485609867",
+      "update": true
     },
     {
       "id": 7,
       "description": "hhhfhh",
       "author": "gfgf",
       "module": "modelo2",
-      "date": "1668485995450"
+      "date": "1668485995450",
+      "update": true
     },
     {
       "id": 8,
       "description": "ggggggg",
       "author": "Benedito",
       "module": "modelo1",
-      "date": "1668486172763"
+      "date": "1668486172763",
+      "update": false
     }
   ]
 }
