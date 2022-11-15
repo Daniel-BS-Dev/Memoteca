@@ -18,7 +18,11 @@ export const enum thinkingTypeAction {
   UPDATE_THINKING_SUCCESS = '[UPDATE_THINKING_SUCCESS] Update thinking success',
   UPDATE_THINKING_FAIL = '[UPDATE_THINKING_FAIL] Update thinking fail',
 
-  CLEAR_FORM = '[CLEAR_FORM] Clear form'
+  CLEAR_FORM = '[CLEAR_FORM] Clear form',
+
+  DELETE_THINKING = '[DELETE_THINKING] Delete thinking',
+  DELETE_THINKING_SUCCESS = '[DELETE_THINKING_SUCCESS] Delete thinking success',
+  DELETE_THINKING_FAIL = '[DELETE_THINKING_FAIL] Delete thinking fail',
 }
 
 export const LoadThinkings = createAction(
@@ -80,4 +84,18 @@ export const UpdateThinkingFail = createAction(
 export const ClearForm = createAction(
   thinkingTypeAction.CLEAR_FORM,
   props<{ payload: boolean }>()
+);
+
+export const DeleteThinking = createAction(
+  thinkingTypeAction.DELETE_THINKING,
+  props<{ payload: ThinkingModel }>()
+);
+
+export const DeleteThinkingSuccess = createAction(
+  thinkingTypeAction.DELETE_THINKING_SUCCESS,
+);
+
+export const DeleteThinkingFail = createAction(
+  thinkingTypeAction.DELETE_THINKING_FAIL,
+  props<{ error: string }>()
 );

@@ -57,6 +57,16 @@ const _thinkingReducer = createReducer(
     ...state,
     edit: payload,
   })),
+
+  on(formThinkingActions.DeleteThinking, (state, { payload }) => ({
+    ...state,
+    thinkings: [...state.thinkings].filter((x) => x.id != payload.id),
+  })),
+
+  on(formThinkingActions.DeleteThinkingFail, (state, { error }) => ({
+    ...state,
+    error: error,
+  }))
 );
 
 export function thinkingReducer(state = initialState, action: Action) {

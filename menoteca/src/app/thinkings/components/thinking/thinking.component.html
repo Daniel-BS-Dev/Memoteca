@@ -13,7 +13,7 @@
     <button class="button-edit" (click)="editThinking(thinking)">
       <img src="/assets/images/icone-editar.png" alt="Ícone de editar">
     </button>
-    <button class="button-delete" routerLink="/list-thinking/delete/{{thinking.id}}">
+    <button class="button-delete" (click)="deleteThinking(thinking)">
       <img src="/assets/images/icone-excluir.png" alt="Ícone de excluir">
     </button>
   </div>

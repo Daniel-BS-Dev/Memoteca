@@ -1,10 +1,7 @@
-<section class="container excluir-pensamentos ff-inter">
-  <div class="modal">
-    <p>O pensamento será apagado. <br/> Confirma a exclusão?</p>
-    <div class="button-actions">
-      <button class="button botao-excluir" (click)="deleteThinking()">Excluir</button>
-      <button class="button botao-cancelar" (click)="canceled()">Cancelar</button>
-    </div>
+<section>
+  <p class="title ff-inter">O pensamento será apagado. Confirma a exclusão?</p>
+  <div class="button-actions">
+    <button class="button botao-excluir" (click)="deleteThinking()">Excluir</button>
+    <button mat-dialog-close class="button botao-cancelar">Cancelar</button>
   </div>
-  <div class="overlay"></div>
 </section>

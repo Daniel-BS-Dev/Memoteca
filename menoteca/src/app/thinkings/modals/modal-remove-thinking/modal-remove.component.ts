@@ -1,8 +1,8 @@
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ThinkingModel } from 'src/app/models/thinking.model';
-import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
+import { DeleteThinking } from '../../redux/action';
 
 @Component({
   selector: 'app-modal-remove',
@@ -11,34 +11,19 @@ import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 })
 export class ModalRemoveComponent implements OnInit {
 
-thinking!: ThinkingModel
+  thinking!: ThinkingModel;
 
   constructor(
-    private service: ThinkingService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private toast: ToastrService,
+    public dialogRef: MatDialogRef<ModalRemoveComponent>,
+    private store$: Store
   ) { }
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    // this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
-    //   this.thinking = el
-    // })
-  }
+  ngOnInit(): void { }
 
   deleteThinking() {
-    if(this.thinking.id) {
-      this.service.delete(this.thinking.id).subscribe(() => {
-        this.router.navigate(['/list-thinking'])
-        this.toast.success('Pensamento removido com sucesso.')
-      })
-    }
-  }
+    this.store$.dispatch(DeleteThinking({ payload: this.thinking }));
 
-  canceled() {
-    this.router.navigate(['/list-thinking'])
+    this.dialogRef.close();
   }
-
 
 }

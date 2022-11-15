@@ -116,4 +116,38 @@ export class ThinkingEffects {
     { dispatch: false }
   );
 
+  LoadDelete$ = createEffect((): any =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.DELETE_THINKING),
+      exhaustMap((refresh: any) =>
+        this.service.delete(refresh.payload).pipe(
+          map(() =>
+            fromThinkingTypeActions.DeleteThinkingSuccess(),
+            catchError(() => of(fromThinkingTypeActions.DeleteThinkingFail({ error: 'Ocorreu um erro.' })))
+          )
+        )
+      )
+    )
+  );
+
+  successDeleteThinking$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.DELETE_THINKING_SUCCESS),
+      tap(() => {
+        this.toastr.success('Pensamento Deletado com sucesso.');
+      })),
+
+    { dispatch: false }
+  );
+
+  errorDeleteThinking$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING_FAIL),
+      tap((error: any) => {
+        this.toastr.error(error.error);
+      })),
+
+    { dispatch: false }
+  );
+
 }

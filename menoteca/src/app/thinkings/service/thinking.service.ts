@@ -31,8 +31,8 @@ export class ThinkingService {
     return this.http.get<ThinkingModel>(url);
   }
 
-  delete(id: number): Observable<ThinkingModel> {
-    const url = `${this.backendAPI}/${id}`
+  delete(thinking: ThinkingModel): Observable<ThinkingModel> {
+    const url = `${this.backendAPI}/${thinking.id}`
     return this.http.delete<ThinkingModel>(url);
   }
 
