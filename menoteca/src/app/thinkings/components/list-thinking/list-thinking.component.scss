@@ -20,8 +20,15 @@
 }
 
 .not-thinkings {
-  text-align: center;
-  padding: 2rem 0 5rem;
+  height: 20vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  .info{
+    font-size: 1.2em !important;
+  }
+
 }
 
 @media (min-width: 500px) {
