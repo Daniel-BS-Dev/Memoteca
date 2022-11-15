@@ -46,15 +46,15 @@ export class AddThinkingComponent implements OnInit {
     if (this.url === 'edit') {
       const id = this.activeRoute.snapshot.paramMap.get('id');
 
-      this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
-        this.thinkingForm.patchValue({
-          id: el.id,
-          description: el.description,
-          author: el.author,
-          module: el.module,
-          update: true
-        });
-      })
+      // this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
+      //   this.thinkingForm.patchValue({
+      //     id: el.id,
+      //     description: el.description,
+      //     author: el.author,
+      //     module: el.module,
+      //     update: true
+      //   });
+      // })
     }
   }
 

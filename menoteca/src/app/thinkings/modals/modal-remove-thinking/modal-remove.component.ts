@@ -22,9 +22,9 @@ thinking!: ThinkingModel
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
-    this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
-      this.thinking = el
-    })
+    // this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
+    //   this.thinking = el
+    // })
   }
 
   deleteThinking() {

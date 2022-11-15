@@ -1,6 +1,9 @@
+import { Store } from '@ngrx/store';
 import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import * as fromThinkingAction from '../../redux/action';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalViewThinkingComponent } from 'src/app/thinkings/modals/modal-view-thinking/modal-view-thinking.component';
 
 @Component({
   selector: 'app-thinking',
@@ -11,7 +14,7 @@ export class ThinkingComponent implements OnInit {
 
   @Input() thinking!: ThinkingModel
 
-  constructor() { }
+  constructor(private store$: Store, private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +28,12 @@ export class ThinkingComponent implements OnInit {
     }
 
     return lengthDescription;
+  }
+
+  seeThinking(thinking: ThinkingModel) {
+    this.store$.dispatch(fromThinkingAction.LoadThinkingSuccess({ payload: thinking }));
+
+    this.dialog.open(ModalViewThinkingComponent);
   }
 
 }

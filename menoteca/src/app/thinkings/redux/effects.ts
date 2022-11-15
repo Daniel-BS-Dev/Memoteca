@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, exhaustMap, map, of, switchMap, tap } from "rxjs";
 import { ThinkingService } from "../service/thinking.service";
-import * as formThinkingTypeActions from "./action";
+import * as fromThinkingTypeActions from "./action";
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
@@ -12,13 +12,13 @@ export class ThinkingEffects {
 
   loadThikings$ = createEffect((): any =>
     this.action$.pipe(
-      ofType(formThinkingTypeActions.thinkingTypeAction.LOAD_THINKINGS),
+      ofType(fromThinkingTypeActions.thinkingTypeAction.LOAD_THINKINGS),
       switchMap(() =>
         this.service.findAll().pipe(
           map((payload: ThinkingModel[]) =>
-            formThinkingTypeActions.LoadThinkingsSuccess({ payload })
+            fromThinkingTypeActions.LoadThinkingsSuccess({ payload })
           ),
-          catchError(() => of(formThinkingTypeActions.LoadThinkingsFail({ error: 'Ocorreu um erro' })))
+          catchError(() => of(fromThinkingTypeActions.LoadThinkingsFail({ error: 'Ocorreu um erro' })))
         )
       )
     )
@@ -26,12 +26,26 @@ export class ThinkingEffects {
 
   errorLoadThinkings$ = createEffect(() =>
     this.action$.pipe(
-      ofType(formThinkingTypeActions.thinkingTypeAction.LOAD_THINKINGS_FAIL),
+      ofType(fromThinkingTypeActions.thinkingTypeAction.LOAD_THINKINGS_FAIL),
       tap((error: any) => {
         this.toastr.error(error.error);
       })),
 
     { dispatch: false }
+  );
+
+  LoadThinking$ = createEffect((): any =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.LOAD_THINKING_SUCCESS),
+      exhaustMap((refresh: any) =>
+        this.service.getById(refresh.payload).pipe(
+          map((payload: ThinkingModel) =>
+            fromThinkingTypeActions.LoadThinkingSuccess({ payload }),
+            catchError((error) => of(fromThinkingTypeActions.LoadThinkingFail({ error })))
+          )
+        )
+      )
+    )
   );
 
 }

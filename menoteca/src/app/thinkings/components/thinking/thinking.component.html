@@ -1,5 +1,5 @@
 <section class="thinking {{ thinking.module }} ff-roboto-mono">
-  <div class="container-info" routerLink="/list-thinking/view/{{thinking.id}}"
+  <div class="container-info" (click)="seeThinking(thinking)"
     matTooltip="Clique no Pensamento para abrir em outra página." matTooltipPosition="above">
     <img src="/assets/images/{{ thinking.module }}.png" alt="Aspas coloridas">
     <div class="date">

@@ -12,7 +12,7 @@ import * as thinkingsActions from '../../redux/action';
 })
 export class ListThinkingComponent implements OnInit {
 
-  thinkingsList$: Observable<ThinkingModel[]> = this.store.select(thinkingSelectors.getAllThikings);
+  thinkingsList$: Observable<ThinkingModel[]> = this.store.select(thinkingSelectors.getAllThinkings);
 
   constructor(private store: Store) { }
 

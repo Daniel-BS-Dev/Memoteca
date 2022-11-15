@@ -26,8 +26,8 @@ export class ThinkingService {
     return this.http.put<ThinkingModel>(url, thinking);
   }
 
-  getById(id: number): Observable<ThinkingModel> {
-    const url = `${this.backendAPI}/${id}`
+  getById(thinking: ThinkingModel): Observable<ThinkingModel> {
+    const url = `${this.backendAPI}/${thinking.id}`
     return this.http.get<ThinkingModel>(url);
   }
 
