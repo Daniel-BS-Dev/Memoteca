@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ThinkingModel } from 'src/app/models/thinking.model';
 import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 
@@ -15,7 +16,8 @@ export class ModalExcluirComponent implements OnInit {
   constructor(
     private service: ThinkingService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toast: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class ModalExcluirComponent implements OnInit {
     if(this.pensamento.id) {
       this.service.delete(this.pensamento.id).subscribe(() => {
         this.router.navigate(['/list-thinking'])
+        this.toast.success('Pensamento removido com sucesso.')
       })
     }
   }

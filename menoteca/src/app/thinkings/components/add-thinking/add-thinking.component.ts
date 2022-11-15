@@ -2,6 +2,7 @@ import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, OnInit } from '@angular/core';
 import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-thinking',
@@ -10,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddThinkingComponent implements OnInit {
 
+  url: any = '';
   thinking: ThinkingModel = {
     id: 0,
     description: '',
@@ -18,11 +20,12 @@ export class AddThinkingComponent implements OnInit {
   }
 
   constructor(private service: ThinkingService, private router: Router,
-    private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute, private toast: ToastrService) { }
 
   ngOnInit(): void {
-    let url = this.activeRoute.snapshot.url[0].path;
-    if (url === 'edit') {
+    this.url = this.activeRoute.snapshot.url[0].path;
+
+    if (this.url === 'edit') {
       const id = this.activeRoute.snapshot.paramMap.get('id');
       this.service.getById(parseInt(id!)).subscribe((el: ThinkingModel) => {
         this.thinking = el
@@ -31,8 +34,17 @@ export class AddThinkingComponent implements OnInit {
   }
 
   addThinking() {
+    if (this.url === 'edit') {
+      this.service.edit(this.thinking).subscribe(() => {
+        this.toast.success('Pensamento atualizado com sucesso.');
+        this.router.navigate(['/list-thinking']);
+      });
+      return;
+    }
+
     this.service.create(this.thinking).subscribe(() => {
-      this.router.navigate(['/list-thinking'])
+      this.toast.success('Pensamento adicionado com sucesso.');
+      this.router.navigate(['/list-thinking']);
     })
   }
 
