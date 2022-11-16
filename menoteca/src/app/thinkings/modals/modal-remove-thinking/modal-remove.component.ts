@@ -1,8 +1,8 @@
-import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 import { ThinkingModel } from 'src/app/models/thinking.model';
+import { MatDialogRef } from '@angular/material/dialog';
 import { DeleteThinking } from '../../redux/action';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-modal-remove',

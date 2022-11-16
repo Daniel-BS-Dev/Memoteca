@@ -1,11 +1,11 @@
-import { Store } from '@ngrx/store';
-import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalRemoveComponent } from '../../modals/modal-remove-thinking/modal-remove.component';
+import { ThinkingModel } from '../../../models/thinking.model';
 import * as fromThinkingAction from '../../redux/action';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalViewThinkingComponent } from 'src/app/thinkings/modals/modal-view-thinking/modal-view-thinking.component';
 import { Router } from '@angular/router';
-import { ModalRemoveComponent } from '../../modals/modal-remove-thinking/modal-remove.component';
+import { Store } from '@ngrx/store';
+import { ModalViewThinkingComponent } from '../../modals/modal-view-thinking/modal-view-thinking.component';
 
 @Component({
   selector: 'app-thinking',

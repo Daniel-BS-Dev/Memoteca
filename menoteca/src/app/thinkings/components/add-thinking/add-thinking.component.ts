@@ -1,13 +1,13 @@
 
-import { Store } from '@ngrx/store';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import * as formsValidation from 'src/app/utils/utilitaries-functions';
-import * as fromThinkingActions from '../../redux/action';
-import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
 import { ThinkingModel } from 'src/app/models/thinking.model';
 import * as fromThinkingSelectors from '../../redux/selector';
+import * as fromThinkingActions from '../../redux/action';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
+import { first, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-add-thinking',
@@ -47,12 +47,12 @@ export class AddThinkingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.edit$.subscribe(el => {
+    this.edit$.pipe(first()).subscribe(el => {
       this.edit = el
     });
 
     if (this.edit) {
-      this.thinking$.subscribe((el: any) => {
+      this.thinking$.pipe(first()).subscribe((el: any) => {
         this.thinkingForm.patchValue({
           id: el.id,
           description: el.description,
@@ -79,7 +79,7 @@ export class AddThinkingComponent implements OnInit {
 
     if (this.edit) {
       this.store$.dispatch(fromThinkingActions.UpdateThinking({ payload: this.thinkingForm.value }));
-      
+
       this.canceled();
       return;
     }

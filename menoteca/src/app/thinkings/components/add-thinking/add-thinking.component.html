@@ -5,7 +5,7 @@
   <form #form="ngForm" [formGroup]="thinkingForm">
     <label for="autoria">Autoria ou fonte</label>
     <input type="text" class="input" id="autoria" name="autoria" placeholder="Digite a autoria ou fonte"
-      formControlName="author" autofocus [class.is-invalid]="validFielForm(author, form)">
+      formControlName="author" [class.is-invalid]="validFielForm(author, form)">
     <div *ngIf="validFielForm(author, form)" style="margin-top: -15px; color:red">
       <p>Campo é obrigatório.</p>
     </div>

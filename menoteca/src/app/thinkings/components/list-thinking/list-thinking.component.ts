@@ -1,10 +1,10 @@
-import { ThinkingModel } from '../../../models/thinking.model';
 import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { ThinkingModel } from '../../../models/thinking.model';
 import * as thinkingSelectors from '../../redux/selector';
 import * as thinkingsActions from '../../redux/action';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-thinking',
@@ -14,10 +14,12 @@ import { Router } from '@angular/router';
 export class ListThinkingComponent implements OnInit {
 
   thinkingsList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.getAllThinkings);
+  loading$: Observable<boolean> = this.store$.select(thinkingSelectors.loadingThinking);
 
   constructor(private store$: Store, private route: Router) { }
 
   ngOnInit(): void {
+    this.store$.dispatch(thinkingsActions.Loading({payload: false}));
     this.store$.dispatch(thinkingsActions.LoadThinkings());
   }
 

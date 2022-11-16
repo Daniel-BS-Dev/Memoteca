@@ -1,5 +1,5 @@
-<div class="overlay" *ngIf="(thinking$ | async) as thinking">
-  <section class="thinking {{ thinking.module }} ff-roboto-mono">
+<div class="overlay ff-roboto-mono" *ngIf="(thinking$ | async) as thinking">
+  <section class="thinking {{ thinking.module }}">
     <div class="container-info">
       <img src="/assets/images/{{ thinking.module }}.png" alt="Aspas coloridas">
       <div class="date">

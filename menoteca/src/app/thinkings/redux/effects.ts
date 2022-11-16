@@ -1,9 +1,9 @@
+import { catchError, exhaustMap, map, mergeMap, of, switchMap, tap } from "rxjs";
 import { ThinkingModel } from './../../models/thinking.model';
-import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, exhaustMap, map, of, switchMap, tap } from "rxjs";
 import { ThinkingService } from "../service/thinking.service";
 import * as fromThinkingTypeActions from "./action";
+import { Injectable } from "@angular/core";
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class ThinkingEffects {
       switchMap(() =>
         this.service.findAll().pipe(
           map((payload: ThinkingModel[]) =>
-            fromThinkingTypeActions.LoadThinkingsSuccess({ payload })
+            fromThinkingTypeActions.LoadThinkingsSuccess({ payload, loading: true })
           ),
           catchError(() => of(fromThinkingTypeActions.LoadThinkingsFail({ error: 'Ocorreu um erro' })))
         )
@@ -51,12 +51,17 @@ export class ThinkingEffects {
   CreateThinking$ = createEffect((): any =>
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING),
-      exhaustMap((refresh: any) =>
+      mergeMap((refresh: any) =>
         this.service.create(refresh.payload).pipe(
           map(() =>
             fromThinkingTypeActions.CreateThinkingSuccess(),
-            catchError(() => of(fromThinkingTypeActions.CreateThinkingFail({ error: 'Ocorreu um erro' })))
-          )
+            switchMap(() =>
+              this.service.findAll().pipe(
+                map((payload: ThinkingModel[]) =>
+                  fromThinkingTypeActions.LoadThinkingsSuccess({ payload, loading: true })
+                ))),
+          ),
+          catchError(() => of(fromThinkingTypeActions.CreateThinkingFail({ error: 'Ocorreu um erro' })))
         )
       )
     )

@@ -19,3 +19,8 @@ export const editThinking = createSelector(
   getThinkingsfeatureState,
   (state: ThinkingState) => state.edit
 );
+
+export const loadingThinking = createSelector(
+  getThinkingsfeatureState,
+  (state: ThinkingState) => state.loading
+);

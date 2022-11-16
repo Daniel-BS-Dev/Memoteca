@@ -4,10 +4,10 @@ import { initialState } from "./state";
 
 const _thinkingReducer = createReducer(
   initialState,
-  on(formThinkingActions.LoadThinkingsSuccess, (state, { payload }) => ({
+  on(formThinkingActions.LoadThinkingsSuccess, (state, { payload, loading }) => ({
     ...state,
     thinkings: [...payload].reverse(),
-    error: '',
+    loading,
   })),
 
   on(formThinkingActions.LoadThinkingsFail, (state, { error }) => ({
@@ -66,7 +66,12 @@ const _thinkingReducer = createReducer(
   on(formThinkingActions.DeleteThinkingFail, (state, { error }) => ({
     ...state,
     error: error,
-  }))
+  })),
+
+  on(formThinkingActions.ClearForm, (state, { payload }) => ({
+    ...state,
+    loading: payload,
+  })),
 );
 
 export function thinkingReducer(state = initialState, action: Action) {

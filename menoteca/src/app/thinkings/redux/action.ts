@@ -23,6 +23,8 @@ export const enum thinkingTypeAction {
   DELETE_THINKING = '[DELETE_THINKING] Delete thinking',
   DELETE_THINKING_SUCCESS = '[DELETE_THINKING_SUCCESS] Delete thinking success',
   DELETE_THINKING_FAIL = '[DELETE_THINKING_FAIL] Delete thinking fail',
+
+  LOADING = '[LOADING] Loading Thinking'
 }
 
 export const LoadThinkings = createAction(
@@ -31,7 +33,7 @@ export const LoadThinkings = createAction(
 
 export const LoadThinkingsSuccess = createAction(
   thinkingTypeAction.LOAD_THINKINGS_SUCCESS,
-  props<{ payload: ThinkingModel[] }>()
+  props<{ payload: ThinkingModel[], loading: boolean }>()
 );
 
 export const LoadThinkingsFail = createAction(
@@ -98,4 +100,9 @@ export const DeleteThinkingSuccess = createAction(
 export const DeleteThinkingFail = createAction(
   thinkingTypeAction.DELETE_THINKING_FAIL,
   props<{ error: string }>()
+);
+
+export const Loading = createAction(
+  thinkingTypeAction.LOADING,
+  props<{ payload: boolean }>()
 );

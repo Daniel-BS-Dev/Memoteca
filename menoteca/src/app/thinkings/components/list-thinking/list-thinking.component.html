@@ -1,4 +1,4 @@
-<section class="container">
+<section class="container" *ngIf="(loading$ | async); else loading">
   <header class="d-flex">
     <h2 class="ff-inter">Meu Mural</h2>
     <button (click)="addThinking()" class="button">Adicionar pensamento</button>
@@ -12,5 +12,12 @@
 <ng-template #notThinkings>
   <div class="ff-inter not-thinkings">
     <h2 class="info">Ainda não há pensamentos cadastrados!</h2>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+    <h2 class="ff-inter" style="margin-top: .5em;">Guarde. Buscando lista de Pensamento...</h2>
   </div>
 </ng-template>

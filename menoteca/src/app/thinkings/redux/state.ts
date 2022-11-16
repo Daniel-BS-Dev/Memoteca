@@ -3,12 +3,14 @@ export interface ThinkingState {
   thinkings: ThinkingModel[],
   thinking: ThinkingModel | null,
   error: string,
-  edit: boolean
+  edit: boolean,
+  loading: boolean
 }
 
 export const initialState: ThinkingState = {
   thinkings: [],
   thinking: null,
   error: '',
-  edit: false
+  edit: false,
+  loading: false
 }

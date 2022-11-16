@@ -1,10 +1,9 @@
-import { Store } from '@ngrx/store';
-import { ThinkingService } from 'src/app/thinkings/service/thinking.service';
 import { Component, OnInit } from '@angular/core';
-import { ThinkingModel } from 'src/app/models/thinking.model';
-import { Observable } from 'rxjs';
 import * as fromThinkingSelectors from 'src/app/thinkings/redux/selector';
+import { ThinkingModel } from 'src/app/models/thinking.model';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-view-thinking',
@@ -14,8 +13,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ModalViewThinkingComponent implements OnInit {
 
   thinking$: Observable<ThinkingModel | null> = this.store$.select(fromThinkingSelectors.getThinking);
+  loading$: Observable<boolean> = this.store$.select(fromThinkingSelectors.loadingThinking);
 
-  constructor( private store$: Store,
+  constructor(private store$: Store,
     public dialogRef: MatDialogRef<ModalViewThinkingComponent>) { }
 
   ngOnInit(): void { }
