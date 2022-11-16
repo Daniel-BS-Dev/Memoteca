@@ -2,114 +2,18 @@
   "Thinkings": [
     {
       "id": 1,
-      "description": "benedito beneditp benedito benedito benedito benedito benedito benedito benedito benedito bedenetido",
-      "author": "daniel",
-      "module": "modelo2",
-      "date": "1668537834433",
-      "update": true
+      "description": "ggggggggggggg",
+      "author": "Daniel",
+      "module": "modelo1",
+      "date": "1668633403546",
+      "update": false
     },
     {
       "id": 2,
-      "description": "teste",
-      "author": "ggggg",
-      "module": "modelo1",
-      "date": "1668537854667",
-      "update": true
-    },
-    {
-      "id": 3,
-      "description": "teste teste teste",
-      "author": "Daniel",
-      "module": "modelo2",
-      "date": "1668538032457",
-      "update": true
-    },
-    {
       "description": "gggg",
-      "author": "ggg",
-      "module": "modelo3",
-      "date": "1668535680668",
-      "update": false,
-      "id": 4
-    },
-    {
-      "description": "gggg",
-      "author": "ggg",
-      "module": "modelo1",
-      "date": "1668536427700",
-      "update": false,
-      "id": 5
-    },
-    {
-      "description": "eu quero ver ",
-      "author": "Daniel",
-      "module": "modelo3",
-      "date": "1668537074379",
-      "update": false,
-      "id": 6
-    },
-    {
-      "id": 7,
-      "description": "Danoeooe",
-      "author": "Daniel",
-      "module": "modelo2",
-      "date": "1668555658728",
-      "update": true
-    },
-    {
-      "id": 8,
-      "description": "Deu certo!",
-      "author": "Daniel",
-      "module": "modelo1",
-      "date": "1668546739777",
-      "update": false
-    },
-    {
-      "id": 9,
-      "description": "Deu certo!",
-      "author": "Daniel",
-      "module": "modelo1",
-      "date": "1668546739777",
-      "update": false
-    },
-    {
-      "id": 10,
-      "description": "ffff",
       "author": "ddd",
       "module": "modelo3",
-      "date": "1668546963173",
-      "update": false
-    },
-    {
-      "id": 11,
-      "description": "ffffff",
-      "author": "Daniel",
-      "module": "modelo2",
-      "date": "1668557551149",
-      "update": true
-    },
-    {
-      "id": 12,
-      "description": "conjunto das palavras escritas, em livro, folheto, documento etc. (p.opos. a comentários, aditamentos, sumário etc.); redação original de qualquer obra escrita.",
-      "author": "José",
-      "module": "modelo1",
-      "date": "1668559432617",
-      "update": true
-    },
-    {
-      "id": 13,
-      "description": "Actions describe unique events that are dispatched from components and services.\nState changes are handled by pure functions called reducers that take the current state and the latest action to compute a new state.\nSelectors are pure functions used to select, derive and compose pieces of state.\nState is accessed with the Store, an observable of state and an observer of actions.",
-      "author": "Daniel",
-      "module": "modelo3",
-      "date": "1668602381565",
-      "update": true
-    },
-    {
-      "id": 14,
-      "description": "Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.",
-      "author": "Silva",
-      "module": "modelo2",
-      "date": "1668559363425",
+      "date": "1668633465202",
       "update": false
     }
   ]

@@ -6,7 +6,7 @@ import * as fromThinkingTypeActions from "./action";
 import { Injectable } from "@angular/core";
 import { ToastrService } from 'ngx-toastr';
 import { Store } from "@ngrx/store";
-import { numberPage } from "./selector";
+import * as fromThinkingSelectors from "./selector";
 
 @Injectable()
 export class ThinkingEffects {
@@ -17,7 +17,7 @@ export class ThinkingEffects {
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.LOAD_THINKINGS),
       withLatestFrom(
-        this.store$.select(numberPage),
+        this.store$.select(fromThinkingSelectors.numberPage),
       ),
       switchMap(([{ }, numberPage]) =>
         this.service.findAll(numberPage).pipe(
@@ -58,20 +58,19 @@ export class ThinkingEffects {
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING),
       withLatestFrom(
-        this.store$.select(numberPage),
+        this.store$.select(fromThinkingSelectors.numberPage),
+        this.store$.select(fromThinkingSelectors.getAllThinkings)
       ),
-      mergeMap((refresh: any) =>
-        this.service.create(refresh.payload).pipe(
-          map(() =>
-            fromThinkingTypeActions.CreateThinkingSuccess(),
-            switchMap(([{ }, numberPage]) =>
-              this.service.findAll(numberPage).pipe(
-                map((payload: ThinkingModel[]) =>
-                  fromThinkingTypeActions.LoadThinkingsSuccess({ payload, loading: true })
-                ))),
+      mergeMap(([{ payload: refresh }, numberPage, thinkings]) =>
+        this.service.create(refresh).pipe(
+          map(() => {
+            fromThinkingTypeActions.CreateThinkingSuccess({ payload: [...thinkings, refresh] })
+            return this.service.findAll(numberPage)
+          }
           ),
           catchError(() => of(fromThinkingTypeActions.CreateThinkingFail({ error: 'Ocorreu um erro' })))
-        )
+        ),
+
       )
     )
   );

@@ -83,7 +83,7 @@ export class AddThinkingComponent implements OnInit {
       this.canceled();
       return;
     }
-
+    
     this.store$.dispatch(fromThinkingActions.CreateThinking({ payload: this.thinkingForm.value }));
     this.canceled();
   }
