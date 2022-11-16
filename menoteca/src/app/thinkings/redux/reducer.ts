@@ -4,6 +4,11 @@ import { initialState } from "./state";
 
 const _thinkingReducer = createReducer(
   initialState,
+  on(formThinkingActions.LoadThinkings, (state, { payload }) => ({
+    ...state,
+    numberPage: payload
+  })),
+
   on(formThinkingActions.LoadThinkingsSuccess, (state, { payload, loading }) => ({
     ...state,
     thinkings: [...payload].reverse(),

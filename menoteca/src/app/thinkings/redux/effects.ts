@@ -1,20 +1,26 @@
-import { catchError, exhaustMap, map, mergeMap, of, switchMap, tap } from "rxjs";
+import { catchError, exhaustMap, map, mergeMap, of, switchMap, tap, withLatestFrom } from "rxjs";
 import { ThinkingModel } from './../../models/thinking.model';
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { ThinkingService } from "../service/thinking.service";
 import * as fromThinkingTypeActions from "./action";
 import { Injectable } from "@angular/core";
 import { ToastrService } from 'ngx-toastr';
+import { Store } from "@ngrx/store";
+import { numberPage } from "./selector";
 
 @Injectable()
 export class ThinkingEffects {
-  constructor(private action$: Actions, private service: ThinkingService, private toastr: ToastrService) { }
+  constructor(private action$: Actions, private service: ThinkingService,
+    private store$: Store, private toastr: ToastrService) { }
 
   loadThikings$ = createEffect((): any =>
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.LOAD_THINKINGS),
-      switchMap(() =>
-        this.service.findAll().pipe(
+      withLatestFrom(
+        this.store$.select(numberPage),
+      ),
+      switchMap(([{ }, numberPage]) =>
+        this.service.findAll(numberPage).pipe(
           map((payload: ThinkingModel[]) =>
             fromThinkingTypeActions.LoadThinkingsSuccess({ payload, loading: true })
           ),
@@ -51,12 +57,15 @@ export class ThinkingEffects {
   CreateThinking$ = createEffect((): any =>
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.CREATE_THINKING),
+      withLatestFrom(
+        this.store$.select(numberPage),
+      ),
       mergeMap((refresh: any) =>
         this.service.create(refresh.payload).pipe(
           map(() =>
             fromThinkingTypeActions.CreateThinkingSuccess(),
-            switchMap(() =>
-              this.service.findAll().pipe(
+            switchMap(([{ }, numberPage]) =>
+              this.service.findAll(numberPage).pipe(
                 map((payload: ThinkingModel[]) =>
                   fromThinkingTypeActions.LoadThinkingsSuccess({ payload, loading: true })
                 ))),
@@ -121,7 +130,7 @@ export class ThinkingEffects {
     { dispatch: false }
   );
 
-  LoadDelete$ = createEffect((): any =>
+  DeleteThinking$ = createEffect((): any =>
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.DELETE_THINKING),
       exhaustMap((refresh: any) =>

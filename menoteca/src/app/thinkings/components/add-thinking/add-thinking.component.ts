@@ -4,7 +4,7 @@ import * as formsValidation from 'src/app/utils/utilitaries-functions';
 import { ThinkingModel } from 'src/app/models/thinking.model';
 import * as fromThinkingSelectors from '../../redux/selector';
 import * as fromThinkingActions from '../../redux/action';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { first, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -38,7 +38,7 @@ export class AddThinkingComponent implements OnInit {
     private formBuilder: FormBuilder) {
     this.thinkingForm = this.formBuilder.group({
       id: '',
-      description: ['', [formsValidation.verificarCampoVazio]],
+      description: ['', Validators.compose([Validators.required, Validators.pattern(/(.|\s)*\S(.|\s)*/)])],
       author: ['', [formsValidation.verificarCampoVazio]],
       module: ['', [formsValidation.verificarCampoVazio]],
       date: Date.now().toString(),
@@ -89,7 +89,7 @@ export class AddThinkingComponent implements OnInit {
   }
 
   validFielForm(field: any, form: any) {
-    return field.errors?.['campoVazio'] && form.submitted;
+    return (field.errors?.['campoVazio'] || field.invalid) && form.submitted;
   }
 
   canceled = () =>

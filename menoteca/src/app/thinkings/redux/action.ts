@@ -28,7 +28,8 @@ export const enum thinkingTypeAction {
 }
 
 export const LoadThinkings = createAction(
-  thinkingTypeAction.LOAD_THINKINGS
+  thinkingTypeAction.LOAD_THINKINGS,
+  props<{ payload: number }>()
 );
 
 export const LoadThinkingsSuccess = createAction(

@@ -101,8 +101,8 @@
       "description": "Actions describe unique events that are dispatched from components and services.\nState changes are handled by pure functions called reducers that take the current state and the latest action to compute a new state.\nSelectors are pure functions used to select, derive and compose pieces of state.\nState is accessed with the Store, an observable of state and an observer of actions.",
       "author": "Daniel",
       "module": "modelo3",
-      "date": "1668559145663",
-      "update": false
+      "date": "1668602381565",
+      "update": true
     },
     {
       "id": 14,

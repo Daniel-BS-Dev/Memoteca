@@ -24,3 +24,8 @@ export const loadingThinking = createSelector(
   getThinkingsfeatureState,
   (state: ThinkingState) => state.loading
 );
+
+export const numberPage = createSelector(
+  getThinkingsfeatureState,
+  (state: ThinkingState) => state.numberPage
+);

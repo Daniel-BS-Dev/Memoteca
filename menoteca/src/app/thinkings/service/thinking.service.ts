@@ -1,6 +1,6 @@
 import { ThinkingModel } from '../../models/thinking.model';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,8 +13,14 @@ export class ThinkingService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<ThinkingModel[]> {
-    return this.http.get<ThinkingModel[]>(this.backendAPI);
+  findAll(page: number): Observable<ThinkingModel[]> {
+    const itensByPage = 6;
+
+    let params = new HttpParams()
+      .set("_page", page)
+      .set("_limit", itensByPage);
+
+    return this.http.get<ThinkingModel[]>(this.backendAPI, { params });
   }
 
   create(thinking: ThinkingModel): Observable<ThinkingModel> {
@@ -37,3 +43,4 @@ export class ThinkingService {
   }
 
 }
+
