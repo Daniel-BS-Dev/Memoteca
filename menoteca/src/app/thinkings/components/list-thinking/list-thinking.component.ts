@@ -15,23 +15,21 @@ export class ListThinkingComponent implements OnInit {
 
   currentPage: number = 3;
   maxPage: boolean = false;
-  minPage: boolean = false;
+  minPage: boolean = true;
 
   totalThinkingList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.getAllThinkings);
   thinkingsList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage });
   loading$: Observable<boolean> = this.store$.select(thinkingSelectors.loadingThinking);
 
-  constructor(private store$: Store, private route: Router) { }
+  constructor(private store$: Store) { }
 
   ngOnInit(): void {
     this.store$.dispatch(thinkingsActions.Loading({ payload: false }));
     this.store$.dispatch(thinkingsActions.LoadThinkings());
   }
 
-  addThinking() {
-    this.store$.dispatch(thinkingsActions.ClearForm({ payload: false }));
-    this.route.navigate(['/list-thinking/add']);
-  }
+  filter = (campo: any) =>
+    this.thinkingsList$ = this.store$.select(thinkingSelectors.filterThinkings, { name: campo.trim() });
 
   loadingMore() {
     this.totalThinkingList$.pipe(first()).subscribe(el => {
@@ -54,5 +52,5 @@ export class ListThinkingComponent implements OnInit {
     this.maxPage = false;
     this.thinkingsList$ = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage -= 3 });
   }
-  
+
 }

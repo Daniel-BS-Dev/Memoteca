@@ -10,9 +10,17 @@ export const getAllThinkings = createSelector(
   (state: ThinkingState) => state.thinkings
 );
 
+export const filterThinkings = createSelector(
+  getThinkingsfeatureState,
+  (state: ThinkingState, props: { name: any }) =>
+    state.thinkings.filter((el: any) =>
+      el.author.toLowerCase().includes(props.name.toLowerCase()))
+);
+
 export const pageThinkings = createSelector(
   getThinkingsfeatureState,
-  (state: ThinkingState, props:{total:number}) => state.thinkings.slice(0, props.total)
+  (state: ThinkingState, props: { total: number }) =>
+    state.thinkings.slice(0, props.total)
 );
 
 export const getThinking = createSelector(

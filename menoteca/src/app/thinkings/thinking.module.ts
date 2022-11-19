@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { storeKey } from './redux/selector';
 import { StoreModule } from '@ngrx/store';
+import { HeaderThinkingComponent } from './components/header-thinking/header-thinking.component';
 
 const declarations = [
   HomeComponent,
@@ -25,7 +26,8 @@ const declarations = [
   ListThinkingComponent,
   AddThinkingComponent,
   ModalRemoveComponent,
-  ModalViewThinkingComponent
+  ModalViewThinkingComponent,
+  HeaderThinkingComponent
 ]
 
 @NgModule({
