@@ -33,7 +33,6 @@
   .info {
     font-size: 1.2em;
   }
-
 }
 
 .loading {
@@ -43,6 +42,23 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.container-button {
+  display: flex;
+  justify-content: center;
+  margin: 4em 0px 0em;
+
+  article {
+    width: 310px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+
+    .button{
+      width: 145px;
+    }
+  }
 }
 
 @media (min-width: 500px) {

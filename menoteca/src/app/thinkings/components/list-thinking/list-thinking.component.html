@@ -8,6 +8,12 @@
       <app-thinking [thinking]="thinking"></app-thinking>
     </div>
   </div>
+  <section class="container-button">
+    <article>
+      <button class="button" (click)="loadingMore()">Carregar mais...</button>
+      <button class="button" (click)="loadingLess()">Carregar menos...</button>
+    </article>
+  </section>
 </section>
 <ng-template #notThinkings>
   <div class="ff-inter not-thinkings">

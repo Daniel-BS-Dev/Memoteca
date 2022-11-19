@@ -33,7 +33,7 @@ const _thinkingReducer = createReducer(
 
   on(formThinkingActions.CreateThinking, (state, { payload }) => ({
     ...state,
-    users: [...state.thinkings, payload],
+    thinkings: [...state.thinkings, payload],
     error: '',
   })),
 
@@ -44,13 +44,8 @@ const _thinkingReducer = createReducer(
 
   on(formThinkingActions.UpdateThinking, (state, { payload }) => ({
     ...state,
-    users: [...state.thinkings].map((row) => {
-      if (row.id === payload.id) {
-        return payload;
-      } else {
-        return row;
-      }
-    }),
+    thinkings: [...state.thinkings, payload],
+    error: ''
   })),
 
   on(formThinkingActions.UpdateThinkingFail, (state, { error }) => ({
@@ -65,7 +60,7 @@ const _thinkingReducer = createReducer(
 
   on(formThinkingActions.DeleteThinking, (state, { payload }) => ({
     ...state,
-    thinkings: [...state.thinkings].filter((x) => x.id != payload.id),
+    thinkings: [...state.thinkings.slice(payload.id)]
   })),
 
   on(formThinkingActions.DeleteThinkingFail, (state, { error }) => ({

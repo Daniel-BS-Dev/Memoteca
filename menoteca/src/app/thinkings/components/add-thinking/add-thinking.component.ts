@@ -18,6 +18,7 @@ export class AddThinkingComponent implements OnInit {
 
   thinking$: Observable<ThinkingModel | null> = this.store$.select(fromThinkingSelectors.getThinking);
   edit$: Observable<boolean> = this.store$.select(fromThinkingSelectors.editThinking);
+  numberPage$: Observable<number> = this.store$.select(fromThinkingSelectors.numberPage);
 
   edit: boolean = false;
   thinkingForm!: FormGroup;
@@ -39,14 +40,18 @@ export class AddThinkingComponent implements OnInit {
     this.thinkingForm = this.formBuilder.group({
       id: '',
       description: ['', Validators.compose([Validators.required, Validators.pattern(/(.|\s)*\S(.|\s)*/)])],
-      author: ['', [formsValidation.verificarCampoVazio]],
+      author: ['', Validators.compose([formsValidation.verificarCampoVazio, Validators.maxLength(30)])],
       module: ['', [formsValidation.verificarCampoVazio]],
       date: Date.now().toString(),
       update: false
     });
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.numberPage$.pipe(first()).subscribe((totalPage: number) => {
+      this.store$.dispatch(fromThinkingActions.LoadThinkings({ payload: totalPage }));
+    });
+
     this.edit$.pipe(first()).subscribe(el => {
       this.edit = el
     });
@@ -83,7 +88,7 @@ export class AddThinkingComponent implements OnInit {
       this.canceled();
       return;
     }
-    
+
     this.store$.dispatch(fromThinkingActions.CreateThinking({ payload: this.thinkingForm.value }));
     this.canceled();
   }

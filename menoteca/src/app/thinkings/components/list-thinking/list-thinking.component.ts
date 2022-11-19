@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class ListThinkingComponent implements OnInit {
 
-  pageAtual: number = 1;
+  pageAtual: number = 100;
 
   thinkingsList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.getAllThinkings);
   loading$: Observable<boolean> = this.store$.select(thinkingSelectors.loadingThinking);
@@ -28,6 +28,14 @@ export class ListThinkingComponent implements OnInit {
   addThinking() {
     this.store$.dispatch(thinkingsActions.ClearForm({ payload: false }));
     this.route.navigate(['/list-thinking/add']);
+  }
+
+  loadingMore() {
+
+  }
+
+  loadingLess() {
+
   }
 
 }

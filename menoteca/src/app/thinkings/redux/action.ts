@@ -62,8 +62,7 @@ export const CreateThinking = createAction(
 );
 
 export const CreateThinkingSuccess = createAction(
-  thinkingTypeAction.CREATE_THINKING_SUCCESS,
-  props<{ payload: ThinkingModel[] }>()
+  thinkingTypeAction.CREATE_THINKING_SUCCESS
 );
 
 export const CreateThinkingFail = createAction(

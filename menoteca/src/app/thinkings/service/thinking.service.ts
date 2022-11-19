@@ -13,8 +13,8 @@ export class ThinkingService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(page: number): Observable<ThinkingModel[]> {
-    const itensByPage = 22;
+  findAll(itensByPage: number): Observable<ThinkingModel[]> {
+    const page = 1;
 
     let params = new HttpParams()
       .set("_page", page)
