@@ -4,7 +4,7 @@ import * as thinkingSelectors from '../../redux/selector';
 import * as thinkingsActions from '../../redux/action';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { first, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-thinking',
@@ -13,16 +13,19 @@ import { Observable } from 'rxjs';
 })
 export class ListThinkingComponent implements OnInit {
 
-  pageAtual: number = 100;
+  currentPage: number = 3;
+  maxPage: boolean = false;
+  minPage: boolean = false;
 
-  thinkingsList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.getAllThinkings);
+  totalThinkingList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.getAllThinkings);
+  thinkingsList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage });
   loading$: Observable<boolean> = this.store$.select(thinkingSelectors.loadingThinking);
 
   constructor(private store$: Store, private route: Router) { }
 
   ngOnInit(): void {
-    this.store$.dispatch(thinkingsActions.Loading({payload: false}));
-    this.store$.dispatch(thinkingsActions.LoadThinkings({ payload: this.pageAtual }));
+    this.store$.dispatch(thinkingsActions.Loading({ payload: false }));
+    this.store$.dispatch(thinkingsActions.LoadThinkings());
   }
 
   addThinking() {
@@ -31,11 +34,25 @@ export class ListThinkingComponent implements OnInit {
   }
 
   loadingMore() {
+    this.totalThinkingList$.pipe(first()).subscribe(el => {
+      if (el.length < this.currentPage) {
+        this.maxPage = true;
+        return;
+      }
 
+      this.minPage = false;
+      this.thinkingsList$ = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage += 3 });
+    })
   }
 
   loadingLess() {
+    if (this.currentPage == 3) {
+      this.minPage = true;
+      return;
+    }
 
+    this.maxPage = false;
+    this.thinkingsList$ = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage -= 3 });
   }
-
+  
 }

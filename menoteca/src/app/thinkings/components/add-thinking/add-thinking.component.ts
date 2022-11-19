@@ -18,7 +18,6 @@ export class AddThinkingComponent implements OnInit {
 
   thinking$: Observable<ThinkingModel | null> = this.store$.select(fromThinkingSelectors.getThinking);
   edit$: Observable<boolean> = this.store$.select(fromThinkingSelectors.editThinking);
-  numberPage$: Observable<number> = this.store$.select(fromThinkingSelectors.numberPage);
 
   edit: boolean = false;
   thinkingForm!: FormGroup;
@@ -48,10 +47,6 @@ export class AddThinkingComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.numberPage$.pipe(first()).subscribe((totalPage: number) => {
-      this.store$.dispatch(fromThinkingActions.LoadThinkings({ payload: totalPage }));
-    });
-
     this.edit$.pipe(first()).subscribe(el => {
       this.edit = el
     });

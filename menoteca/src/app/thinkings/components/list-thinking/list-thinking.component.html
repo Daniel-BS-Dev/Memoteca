@@ -10,8 +10,12 @@
   </div>
   <section class="container-button">
     <article>
-      <button class="button" (click)="loadingMore()">Carregar mais...</button>
-      <button class="button" (click)="loadingLess()">Carregar menos...</button>
+      <button [class.disabled]="maxPage" class="button" (click)="loadingMore()">
+        {{ maxPage ? 'Fim da lista' : 'Carregar mais...' }}
+      </button>
+      <button [class.disabled]="minPage" class="button" (click)="loadingLess()">
+        {{ minPage ? 'Começo da lista' : 'Carregar menos...' }}
+      </button>
     </article>
   </section>
 </section>

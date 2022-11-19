@@ -10,6 +10,11 @@ export const getAllThinkings = createSelector(
   (state: ThinkingState) => state.thinkings
 );
 
+export const pageThinkings = createSelector(
+  getThinkingsfeatureState,
+  (state: ThinkingState, props:{total:number}) => state.thinkings.slice(0, props.total)
+);
+
 export const getThinking = createSelector(
   getThinkingsfeatureState,
   (state: ThinkingState) => state.thinking
@@ -25,7 +30,3 @@ export const loadingThinking = createSelector(
   (state: ThinkingState) => state.loading
 );
 
-export const numberPage = createSelector(
-  getThinkingsfeatureState,
-  (state: ThinkingState) => state.numberPage
-);
