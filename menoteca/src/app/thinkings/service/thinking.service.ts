@@ -13,14 +13,8 @@ export class ThinkingService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(itensByPage: number): Observable<ThinkingModel[]> {
-    const page = 1;
-
-    let params = new HttpParams()
-      .set("_page", page)
-      .set("_limit", itensByPage);
-
-    return this.http.get<ThinkingModel[]>(this.backendAPI, { params });
+  findAll(): Observable<ThinkingModel[]> {
+    return this.http.get<ThinkingModel[]>(this.backendAPI);
   }
 
   create(thinking: ThinkingModel): Observable<ThinkingModel> {

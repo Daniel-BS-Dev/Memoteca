@@ -60,7 +60,7 @@ const _thinkingReducer = createReducer(
 
   on(formThinkingActions.DeleteThinking, (state, { payload }) => ({
     ...state,
-    thinkings: [...state.thinkings.slice(payload.id)]
+    thinkings: [...state.thinkings].filter((x) => x.id != payload.id)
   })),
 
   on(formThinkingActions.DeleteThinkingFail, (state, { error }) => ({

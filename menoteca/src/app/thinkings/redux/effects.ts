@@ -16,11 +16,8 @@ export class ThinkingEffects {
   loadThikings$ = createEffect((): any =>
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.LOAD_THINKINGS),
-      withLatestFrom(
-        this.store$.select(fromThinkingSelectors.numberPage),
-      ),
-      switchMap(([{ }, numberPage]) =>
-        this.service.findAll(numberPage).pipe(
+      switchMap(() =>
+        this.service.findAll().pipe(
           map((payload: ThinkingModel[]) =>
             fromThinkingTypeActions.LoadThinkingsSuccess({ payload, loading: true })
           ),
@@ -93,7 +90,7 @@ export class ThinkingEffects {
       ofType(fromThinkingTypeActions.thinkingTypeAction.UPDATE_THINKING),
       mergeMap((refresh: any) =>
         this.service.edit(refresh.payload).pipe(
-          map(() => 
+          map(() =>
             fromThinkingTypeActions.UpdateThinkingSuccess()
           ),
           catchError(() => of(fromThinkingTypeActions.UpdateThinkingFail({ error: 'Ocorreu um erro' })))
@@ -130,18 +127,6 @@ export class ThinkingEffects {
           map(() =>
             fromThinkingTypeActions.DeleteThinkingSuccess(),
             catchError(() => of(fromThinkingTypeActions.DeleteThinkingFail({ error: 'Ocorreu um erro.' })))
-          )
-        ).pipe(
-          withLatestFrom(
-            this.store$.select(fromThinkingSelectors.numberPage)
-          ),
-          switchMap(([{ }, numberPage]) =>
-            this.service.findAll(numberPage).pipe(
-              map((payload: ThinkingModel[]) =>
-                fromThinkingTypeActions.LoadThinkingsSuccess({ payload, loading: true })
-              ),
-              catchError(() => of(fromThinkingTypeActions.LoadThinkingsFail({ error: 'Ocorreu um erro' })))
-            )
           )
         )
       )
