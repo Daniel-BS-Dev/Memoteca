@@ -1,48 +1,49 @@
-.overlay {
-  background-color: #fff;
-  background: url(/assets/images/background-completo.png);
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-}
+// .overlay {
+//   background-color: #fff;
+//   background: url(/assets/images/background-completo.png);
+//   background-size: cover;
+//   height: 100vh;
+//   left: 0;
+//   position: fixed;
+//   top: 0;
+//   width: 100vw;
+//   z-index: 100;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 2em;
+// }
 
-.thinking {
-  width: 310px;
-  flex-wrap: wrap;
-  background-color: #f8f9fe;
-  padding: 2em;
-}
+// .thinking {
+//   width: 310px;
+//   flex-wrap: wrap;
+//   background-color: #f8f9fe;
+//   padding: 2em;
+// }
 
-.container-info {
-  position: relative;
+// .container-info {
+//   position: relative;
 
-  .date {
-    position: absolute;
-    top: 2px;
-    right: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+//   .date {
+//     position: absolute;
+//     top: 2px;
+//     right: 5px;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-end;
 
-    em {
-      width: 50%;
-      font-size: 0.8em;
-      margin-top: 0.3em;
-      text-align: end;
-    }
-  }
-}
+//     em {
+//       width: 50%;
+//       font-size: 0.8em;
+//       margin-top: 0.3em;
+//       text-align: end;
+//     }
+//   }
+// }
 
-.autoria {
-  padding: 1em 0px;
-}
+// .autoria {
+//   padding: 1em 0px;
+// }
 
 .description {
   text-align: justify;

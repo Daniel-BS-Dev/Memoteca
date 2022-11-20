@@ -74,4 +74,6 @@
 
 .disabled, .disabled:hover {
  border: none;
+ cursor: default;
+ opacity: 1;
 }
