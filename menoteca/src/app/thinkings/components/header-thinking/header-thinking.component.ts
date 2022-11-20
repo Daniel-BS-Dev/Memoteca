@@ -12,7 +12,7 @@ import { ClearForm } from '../../redux/action';
 })
 export class HeaderThinkingComponent implements OnInit {
 
-  @Output() filter = new EventEmitter();
+  @Output() searchName = new EventEmitter();
   inputFilter = new FormControl('');
   describe$ = new Subject();
 
@@ -29,7 +29,7 @@ export class HeaderThinkingComponent implements OnInit {
 
   filterInput() {
     this.inputFilter.valueChanges.pipe(takeUntil(this.describe$)).subscribe((filter: any) => {
-      this.filter.emit(filter);
+      this.searchName.emit(filter);
     });
   }
 

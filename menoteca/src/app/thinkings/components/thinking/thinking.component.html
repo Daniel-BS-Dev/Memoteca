@@ -10,10 +10,13 @@
     <p class="description">{{ thinkingDescription }}</p>
   </div>
   <div class="button-actions">
-    <button class="button-edit" (click)="toFavorite(thinking)">
-      <img src="/assets/images/icone-favorito-inativo.png" alt="Ícone de favoritar">
+    <button *ngIf="!thinking.favorite" class="favorite" (click)="toFavorite(thinking)">
+      <img src="/assets/images/icone-favorito-inativo.png" alt="Ícone de não favorito">
     </button>
-    <button class="button-edit" (click)="editThinking(thinking)">
+    <button  *ngIf="thinking.favorite" class="favorite" (click)="toDesfavorite(thinking)">
+      <img src="/assets/images/icone-favorito-ativo.png" alt="Ícone de favorito">
+    </button>
+    <button  class="button-edit" (click)="editThinking(thinking)">
       <img src="/assets/images/icone-editar.png" alt="Ícone de editar">
     </button>
     <button class="button-delete" (click)="deleteThinking(thinking)">
@@ -21,3 +24,7 @@
     </button>
   </div>
 </section>
+
+<!--button *ngIf="thinking.favorite" class="button-edit" (click)="toDesfavorite(thinking)">
+  <img src="/assets/images/icone-favorito-ativo.png" alt="Ícone de favoritar">
+</!--button-->

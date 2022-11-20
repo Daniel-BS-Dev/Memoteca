@@ -40,11 +40,15 @@
     margin-top: 10px;
   }
 
-  .button-edit {
+  .button-edit, .favorite {
     border: none;
     cursor: pointer;
     margin-right: 10px;
     margin-top: 10px;
+  }
+
+  .favorite{
+    margin-right: 18px;
   }
 }
 

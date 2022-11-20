@@ -1,3 +1,4 @@
+import { getThinking } from './selector';
 import { catchError, exhaustMap, map, mergeMap, of, switchMap, tap, withLatestFrom } from "rxjs";
 import { ThinkingModel } from './../../models/thinking.model';
 import { Actions, createEffect, ofType } from "@ngrx/effects";
@@ -6,7 +7,6 @@ import * as fromThinkingTypeActions from "./action";
 import { Injectable } from "@angular/core";
 import { ToastrService } from 'ngx-toastr';
 import { Store } from "@ngrx/store";
-import * as fromThinkingSelectors from "./selector";
 
 @Injectable()
 export class ThinkingEffects {
@@ -153,15 +153,16 @@ export class ThinkingEffects {
     { dispatch: false }
   );
 
-  FovoriteThinking$ = createEffect((): any =>
+  FavoriteThinking$ = createEffect((): any =>
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.FAVORITE_THINKING),
-      exhaustMap((refresh: any) =>
-        this.service.toFavorite(refresh.payload).pipe(
+      exhaustMap((refresh: any) => {
+        return this.service.toFavorite(refresh.payload).pipe(
           map(() =>
-            fromThinkingTypeActions.FavoriteThinkingSuccess()
+            fromThinkingTypeActions.FavoriteThinkingSuccess({ payload: refresh.payload })
           )
         )
+      }
       )
     )
   );
@@ -169,12 +170,13 @@ export class ThinkingEffects {
   successFavoriteThinking$ = createEffect(() =>
     this.action$.pipe(
       ofType(fromThinkingTypeActions.thinkingTypeAction.FAVORITE_THINKING_SUCCESS),
-      tap(() => {
-        this.toastr.success('Pensamento favoritado com sucesso.');
+      tap((rep: any) => {
+        this.toastr.success(
+          rep.payload.favorite ? 'Pensamento salvo como favorito.'
+            : 'Pensamento salvo como não favorito.'
+        );
       })),
 
     { dispatch: false }
   );
-
-
 }

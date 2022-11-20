@@ -1,121 +1,58 @@
 {
   "Thinkings": [
     {
-      "id": 3,
-      "description": "Um texto é uma manifestação da linguagem. Pode ser definido como tudo aquilo que é dito por um emissor e interpretado por um receptor. Dessa forma, tudo que é interpretável é um texto. Outra forma de conceituação é pensar que tudo aquilo que produz um sentido completo, que seja uma mensagem compreensível, é um texto.",
-      "author": "Silva",
+      "id": 2,
+      "description": "bbbbbbbbbbb",
+      "author": "ffffff",
       "module": "modelo3",
-      "date": "1668646037462",
-      "update": false,
-      "favorite": false
-    },
-    {
-      "id": 4,
-      "description": "Tarefa tarefa",
-      "author": "Silva",
-      "module": "modelo1",
-      "date": "1668882973023",
+      "date": "1668914432359",
       "update": true,
       "favorite": false
     },
     {
-      "id": 6,
-      "description": "Daniel Benedito da silva",
-      "author": "Pedro",
+      "id": 3,
+      "description": "iiiiiiii",
+      "author": "jjjjjjj",
+      "module": "modelo1",
+      "date": "1668914442601",
+      "update": true,
+      "favorite": true
+    },
+    {
+      "id": 4,
+      "description": "bvbvv",
+      "author": "ggggg",
       "module": "modelo3",
-      "date": "1668878925664",
+      "date": "1668914390642",
+      "update": false,
+      "favorite": false
+    },
+    {
+      "id": 5,
+      "description": "bbbbbbb",
+      "author": "jjjjjjjj",
+      "module": "modelo2",
+      "date": "1668914408202",
+      "update": false,
+      "favorite": true
+    },
+    {
+      "id": 6,
+      "description": "bvbvbbvbvbbv",
+      "author": "gfgf",
+      "module": "modelo3",
+      "date": "1668950804224",
       "update": false,
       "favorite": false
     },
     {
       "id": 7,
-      "description": "Daniel Benedito Silva",
-      "author": "Filtra",
+      "description": "g",
+      "author": "fhhfhfhfh",
       "module": "modelo2",
-      "date": "1668882952820",
+      "date": "1668950875774",
       "update": true,
       "favorite": false
-    },
-    {
-      "id": 9,
-      "description": "Eu não sei se vai funcionar quero ver",
-      "author": "Vamos denovo",
-      "module": "modelo3",
-      "date": "1668879484768",
-      "update": false,
-      "favorite": false
-    },
-    {
-      "id": 10,
-      "description": "Eu estou sem whatsapp",
-      "author": "Robson",
-      "module": "modelo1",
-      "date": "1668882939697",
-      "update": true,
-      "favorite": false
-    },
-    {
-      "id": 11,
-      "description": "Testse teste teste",
-      "author": "daniel",
-      "module": "modelo3",
-      "date": "1668889051100",
-      "update": false,
-      "favorite": false
-    },
-    {
-      "id": 12,
-      "description": "TEtetetet",
-      "author": "Silva",
-      "module": "modelo3",
-      "date": "1668889099510",
-      "update": false,
-      "favorite": false
-    },
-    {
-      "id": 13,
-      "description": "Um texto é uma manifestação da linguagem. Pode ser definido como tudo aquilo que é dito por um emissor e interpretado por um receptor. Dessa forma, tudo que é interpretável é um texto. Outra forma de conceituação é pensar que tudo aquilo que produz um sentido completo, que seja uma mensagem compreensível, é um texto.\nUm texto é uma manif daneil ben",
-      "author": "Benedito",
-      "module": "modelo3",
-      "date": "1668889563383",
-      "update": false,
-      "favorite": false
-    },
-    {
-      "id": 14,
-      "description": "Um texto é uma manifestação da linguagem. Pode ser definido como tudo aquilo que é dito por um emissor e interpretado por um receptor. Dessa forma, tudo que é interpretável é um texto. Outra forma de conceituação é pensar que tudo aquilo que produz um sentido completo, que seja uma mensagem compreensível, é um texto.\nUm texto é uma manifestação da linguagem. Pode ser definido daniel nebe d djeue e",
-      "author": "Silva",
-      "module": "modelo1",
-      "date": "1668889639485",
-      "update": false,
-      "favorite": false
-    },
-    {
-      "id": 15,
-      "description": "Um texto é uma manifestação da linguagem. Pode ser definido como tudo aquilo que é dito por um emissor e interpretado por um receptor. Dessa forma, tudo que é interpretáv horma de conceituaar que tudo gf leto, que seja uma mensagem compreensível, é um texto.\nUm texto é uma manifestação da linguagem. Pode ser definido como tudo aquilo que é dito por um emissor e interpretado por um receptor. Dessa forma, tudo que é interpretável é um dan",
-      "author": "Teste",
-      "module": "modelo2",
-      "date": "1668889865493",
-      "update": true,
-      "favorite": false
-    },
-    {
-      "id": 16,
-      "description": "hhhhhhhhhhhhhhhhhh",
-      "author": "hhhhhhh",
-      "module": "modelo3",
-      "date": "1668890198508",
-      "update": false,
-      "favorite": true
-    },
-    {
-      "id": 17,
-      "description": "fdffdffd",
-      "author": "Silva",
-      "module": "modelo1",
-      "date": "1668890325378",
-      "update": false,
-      "favorite": true
     }
   ]
 }

@@ -1,5 +1,5 @@
 <section class="container" *ngIf="(loading$ | async); else loading">
-  <app-listagem-thinking-header (filter)="filter($event)"></app-listagem-thinking-header>
+  <app-listagem-thinking-header (searchName)="filter($event)"></app-listagem-thinking-header>
   <div class="mural" *ngIf="(thinkingsList$ | async)?.length, else notThinkings">
     <div *ngFor="let thinking of (thinkingsList$ | async)">
       <app-thinking [thinking]="thinking"></app-thinking>

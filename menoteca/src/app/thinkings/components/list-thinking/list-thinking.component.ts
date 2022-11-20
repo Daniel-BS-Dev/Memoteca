@@ -31,6 +31,11 @@ export class ListThinkingComponent implements OnInit {
   }
 
   filter = (campo: any) => {
+    if(!campo) {
+      this.thinkingsList$ = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage });
+      return;
+    }
+
     this.thinkingsList$ = this.store$.select(thinkingSelectors.filterThinkings, { name: campo.trim() });
     this.filterInput = true;
   }

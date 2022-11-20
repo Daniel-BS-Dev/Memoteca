@@ -116,5 +116,6 @@ export const FavoriteThinking = createAction(
 );
 
 export const FavoriteThinkingSuccess = createAction(
-  thinkingTypeAction.FAVORITE_THINKING_SUCCESS
+  thinkingTypeAction.FAVORITE_THINKING_SUCCESS,
+  props<{ payload: ThinkingModel }>()
 );

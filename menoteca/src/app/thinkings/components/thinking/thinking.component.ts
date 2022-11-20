@@ -14,13 +14,12 @@ import { ModalViewThinkingComponent } from '../../modals/modal-view-thinking/mod
 })
 export class ThinkingComponent implements OnInit {
 
-  @Input() thinking!: ThinkingModel
+  @Input() thinking!: ThinkingModel;
 
   constructor(private store$: Store, private dialog: MatDialog,
     private route: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   get thinkingDescription() {
     let lengthDescription = this.thinking.description;
@@ -52,8 +51,10 @@ export class ThinkingComponent implements OnInit {
     modal.componentInstance.thinking = thinking;
   }
 
-  toFavorite(thinking: ThinkingModel) {
+  toFavorite = (thinking: ThinkingModel) =>
     this.store$.dispatch(fromThinkingAction.FavoriteThinking({ payload: { ...thinking, favorite: true } }));
-  }
+
+  toDesfavorite = (thinking: ThinkingModel) =>
+    this.store$.dispatch(fromThinkingAction.FavoriteThinking({ payload: { ...thinking, favorite: false } }));
 
 }

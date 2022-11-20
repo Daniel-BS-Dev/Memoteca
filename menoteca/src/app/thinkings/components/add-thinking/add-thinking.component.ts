@@ -42,7 +42,8 @@ export class AddThinkingComponent implements OnInit {
       author: ['', Validators.compose([formsValidation.verificarCampoVazio, Validators.maxLength(30)])],
       module: ['', [formsValidation.verificarCampoVazio]],
       date: Date.now().toString(),
-      update: false
+      update: false,
+      favorite: false
     });
   }
 

@@ -70,7 +70,13 @@ const _thinkingReducer = createReducer(
 
   on(formThinkingActions.FavoriteThinking, (state, { payload }) => ({
     ...state,
-    thinkings: [...state.thinkings].filter((x) => x.id != payload.id)
+    thinkings: [...state.thinkings].map(row => {
+      if(payload.id === row.id) {
+        return payload;
+      }else{
+        return row
+      }
+    })
   })),
 );
 
