@@ -153,4 +153,28 @@ export class ThinkingEffects {
     { dispatch: false }
   );
 
+  FovoriteThinking$ = createEffect((): any =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.FAVORITE_THINKING),
+      exhaustMap((refresh: any) =>
+        this.service.toFavorite(refresh.payload).pipe(
+          map(() =>
+            fromThinkingTypeActions.FavoriteThinkingSuccess()
+          )
+        )
+      )
+    )
+  );
+
+  successFavoriteThinking$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromThinkingTypeActions.thinkingTypeAction.FAVORITE_THINKING_SUCCESS),
+      tap(() => {
+        this.toastr.success('Pensamento favoritado com sucesso.');
+      })),
+
+    { dispatch: false }
+  );
+
+
 }

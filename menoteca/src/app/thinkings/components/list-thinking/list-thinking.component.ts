@@ -16,6 +16,7 @@ export class ListThinkingComponent implements OnInit {
   currentPage: number = 3;
   maxPage: boolean = false;
   minPage: boolean = true;
+  filterInput: boolean = false;
 
   totalThinkingList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.getAllThinkings);
   thinkingsList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage });
@@ -26,10 +27,13 @@ export class ListThinkingComponent implements OnInit {
   ngOnInit(): void {
     this.store$.dispatch(thinkingsActions.Loading({ payload: false }));
     this.store$.dispatch(thinkingsActions.LoadThinkings());
+    this.filterInput = false;
   }
 
-  filter = (campo: any) =>
+  filter = (campo: any) => {
     this.thinkingsList$ = this.store$.select(thinkingSelectors.filterThinkings, { name: campo.trim() });
+    this.filterInput = true;
+  }
 
   loadingMore() {
     this.totalThinkingList$.pipe(first()).subscribe(el => {

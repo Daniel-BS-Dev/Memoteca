@@ -24,7 +24,10 @@ export const enum thinkingTypeAction {
   DELETE_THINKING_SUCCESS = '[DELETE_THINKING_SUCCESS] Delete thinking success',
   DELETE_THINKING_FAIL = '[DELETE_THINKING_FAIL] Delete thinking fail',
 
-  LOADING = '[LOADING] Loading Thinking'
+  LOADING = '[LOADING] Loading Thinking',
+
+  FAVORITE_THINKING = '[FAVORITE_THINKING] Favorite thinking',
+  FAVORITE_THINKING_SUCCESS = '[FAVORITE_THINKING_SUCCESS] Favorite thinking success',
 }
 
 export const LoadThinkings = createAction(
@@ -105,4 +108,13 @@ export const DeleteThinkingFail = createAction(
 export const Loading = createAction(
   thinkingTypeAction.LOADING,
   props<{ payload: boolean }>()
+);
+
+export const FavoriteThinking = createAction(
+  thinkingTypeAction.FAVORITE_THINKING,
+  props<{ payload: ThinkingModel }>()
+);
+
+export const FavoriteThinkingSuccess = createAction(
+  thinkingTypeAction.FAVORITE_THINKING_SUCCESS
 );

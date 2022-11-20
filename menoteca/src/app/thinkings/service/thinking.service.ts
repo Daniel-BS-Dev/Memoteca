@@ -36,5 +36,10 @@ export class ThinkingService {
     return this.http.delete<ThinkingModel>(url);
   }
 
+  toFavorite(thinking: ThinkingModel): Observable<ThinkingModel> {
+    const url = `${this.backendAPI}/${thinking.id}`
+    return this.http.put<ThinkingModel>(url, thinking);
+  }
+
 }
 

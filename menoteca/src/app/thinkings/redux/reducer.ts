@@ -67,6 +67,11 @@ const _thinkingReducer = createReducer(
     ...state,
     loading: payload,
   })),
+
+  on(formThinkingActions.FavoriteThinking, (state, { payload }) => ({
+    ...state,
+    thinkings: [...state.thinkings].filter((x) => x.id != payload.id)
+  })),
 );
 
 export function thinkingReducer(state = initialState, action: Action) {

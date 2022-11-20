@@ -18,7 +18,9 @@
 </section>
 <ng-template #notThinkings>
   <div class="ff-inter not-thinkings">
-    <h2 class="info">Ainda não há pensamentos cadastrados!</h2>
+    <h2 class="info">
+      {{ filterInput ? 'Nenhum resultado encontrado.' : 'Ainda não há pensamentos cadastrados!' }}
+    </h2>
   </div>
 </ng-template>
 

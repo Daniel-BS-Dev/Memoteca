@@ -2,8 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
 import { ClearForm } from '../../redux/action';
-import { filterThinkings } from '../../redux/selector';
 
 @Component({
   selector: 'app-listagem-thinking-header',
@@ -14,6 +14,7 @@ export class HeaderThinkingComponent implements OnInit {
 
   @Output() filter = new EventEmitter();
   inputFilter = new FormControl('');
+  describe$ = new Subject();
 
   constructor(private store$: Store, private route: Router) { }
 
@@ -27,9 +28,14 @@ export class HeaderThinkingComponent implements OnInit {
   }
 
   filterInput() {
-    this.inputFilter.valueChanges.subscribe((filter: any) => {
+    this.inputFilter.valueChanges.pipe(takeUntil(this.describe$)).subscribe((filter: any) => {
       this.filter.emit(filter);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.describe$.next(this.describe$);
+    this.describe$.complete();
   }
 
 }

@@ -47,9 +47,13 @@ export class ThinkingComponent implements OnInit {
   }
 
   deleteThinking(thinking: ThinkingModel) {
-    const modal = this.dialog.open(ModalRemoveComponent, {width: '320px'});
+    const modal = this.dialog.open(ModalRemoveComponent, { width: '320px' });
 
     modal.componentInstance.thinking = thinking;
+  }
+
+  toFavorite(thinking: ThinkingModel) {
+    this.store$.dispatch(fromThinkingAction.FavoriteThinking({ payload: { ...thinking, favorite: true } }));
   }
 
 }

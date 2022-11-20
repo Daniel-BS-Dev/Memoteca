@@ -6,7 +6,8 @@
       "author": "Silva",
       "module": "modelo3",
       "date": "1668646037462",
-      "update": false
+      "update": false,
+      "favorite": false
     },
     {
       "id": 4,
@@ -14,15 +15,17 @@
       "author": "Silva",
       "module": "modelo1",
       "date": "1668882973023",
-      "update": true
+      "update": true,
+      "favorite": false
     },
     {
+      "id": 6,
       "description": "Daniel Benedito da silva",
       "author": "Pedro",
       "module": "modelo3",
       "date": "1668878925664",
       "update": false,
-      "id": 6
+      "favorite": false
     },
     {
       "id": 7,
@@ -30,15 +33,17 @@
       "author": "Filtra",
       "module": "modelo2",
       "date": "1668882952820",
-      "update": true
+      "update": true,
+      "favorite": false
     },
     {
+      "id": 9,
       "description": "Eu não sei se vai funcionar quero ver",
       "author": "Vamos denovo",
       "module": "modelo3",
       "date": "1668879484768",
       "update": false,
-      "id": 9
+      "favorite": false
     },
     {
       "id": 10,
@@ -46,7 +51,8 @@
       "author": "Robson",
       "module": "modelo1",
       "date": "1668882939697",
-      "update": true
+      "update": true,
+      "favorite": false
     },
     {
       "id": 11,
@@ -54,7 +60,8 @@
       "author": "daniel",
       "module": "modelo3",
       "date": "1668889051100",
-      "update": false
+      "update": false,
+      "favorite": false
     },
     {
       "id": 12,
@@ -62,7 +69,8 @@
       "author": "Silva",
       "module": "modelo3",
       "date": "1668889099510",
-      "update": false
+      "update": false,
+      "favorite": false
     },
     {
       "id": 13,
@@ -70,7 +78,8 @@
       "author": "Benedito",
       "module": "modelo3",
       "date": "1668889563383",
-      "update": false
+      "update": false,
+      "favorite": false
     },
     {
       "id": 14,
@@ -78,7 +87,8 @@
       "author": "Silva",
       "module": "modelo1",
       "date": "1668889639485",
-      "update": false
+      "update": false,
+      "favorite": false
     },
     {
       "id": 15,
@@ -86,7 +96,8 @@
       "author": "Teste",
       "module": "modelo2",
       "date": "1668889865493",
-      "update": true
+      "update": true,
+      "favorite": false
     },
     {
       "id": 16,
@@ -94,7 +105,8 @@
       "author": "hhhhhhh",
       "module": "modelo3",
       "date": "1668890198508",
-      "update": false
+      "update": false,
+      "favorite": true
     },
     {
       "id": 17,
@@ -102,7 +114,8 @@
       "author": "Silva",
       "module": "modelo1",
       "date": "1668890325378",
-      "update": false
+      "update": false,
+      "favorite": true
     }
   ]
 }

@@ -4,5 +4,6 @@ export interface ThinkingModel {
   author: string,
   module: string,
   date: string,
-  update: boolean
+  update: boolean,
+  favorite: boolean
 }

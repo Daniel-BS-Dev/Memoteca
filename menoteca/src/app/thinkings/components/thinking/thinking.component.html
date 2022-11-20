@@ -10,6 +10,9 @@
     <p class="description">{{ thinkingDescription }}</p>
   </div>
   <div class="button-actions">
+    <button class="button-edit" (click)="toFavorite(thinking)">
+      <img src="/assets/images/icone-favorito-inativo.png" alt="Ícone de favoritar">
+    </button>
     <button class="button-edit" (click)="editThinking(thinking)">
       <img src="/assets/images/icone-editar.png" alt="Ícone de editar">
     </button>
