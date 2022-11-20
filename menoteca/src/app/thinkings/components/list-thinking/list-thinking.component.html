@@ -7,7 +7,7 @@
     </div>
   </div>
   <section class="container-button">
-    <article>
+    <article *ngIf="!allFavoriteThinking">
       <button [class.disabled]="maxPage" class="button" (click)="loadingMore()">
         {{ maxPage ? 'Fim da lista' : 'Carregar mais...' }}
       </button>
