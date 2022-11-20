@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ModalViewThinkingComponent } from './modals/modal-view-thinking/modal-view-thinking.component';
 import { ListThinkingComponent } from './components/list-thinking/list-thinking.component';
 import { ModalRemoveComponent } from './modals/modal-remove-thinking/modal-remove.component';
 import { AddThinkingComponent } from './components/add-thinking/add-thinking.component';
@@ -19,6 +18,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { storeKey } from './redux/selector';
 import { StoreModule } from '@ngrx/store';
 import { HeaderThinkingComponent } from './components/header-thinking/header-thinking.component';
+import { ViewThinkingComponent } from './components/view-thinking/view-thinking.component';
 
 const declarations = [
   HomeComponent,
@@ -26,13 +26,13 @@ const declarations = [
   ListThinkingComponent,
   AddThinkingComponent,
   ModalRemoveComponent,
-  ModalViewThinkingComponent,
   HeaderThinkingComponent
 ]
 
 @NgModule({
   declarations: [
-    ...declarations
+    ...declarations,
+    ViewThinkingComponent
   ],
   imports: [
     CommonModule,

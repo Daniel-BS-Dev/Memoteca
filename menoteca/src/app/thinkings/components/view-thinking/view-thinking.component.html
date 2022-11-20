@@ -1,0 +1,16 @@
+<div class="overlay ff-roboto-mono" *ngIf="(thinking$ | async) as thinking">
+  <section class="thinking {{ thinking.module }}">
+    <div class="container-info">
+      <img src="/assets/images/{{ thinking.module }}.png" alt="Aspas coloridas">
+      <div class="date">
+        <small> {{ thinking.date | date: "dd/MM/yyyy 'às' HH:mm" }}</small>
+        <em *ngIf="thinking.update">Atualizada</em>
+      </div>
+      <p class="autoria"><b>{{ thinking.author }}</b></p>
+      <p class="description">{{ thinking.description }}</p>
+    </div>
+    <div class="button-actions">
+      <button class="button botao-cancelar" (click)="back()">Voltar para Listagem</button>
+    </div>
+  </section>
+</div>

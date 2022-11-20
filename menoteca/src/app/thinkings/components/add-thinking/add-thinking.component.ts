@@ -38,7 +38,7 @@ export class AddThinkingComponent implements OnInit {
     private formBuilder: FormBuilder) {
     this.thinkingForm = this.formBuilder.group({
       id: '',
-      description: ['', Validators.compose([Validators.required, Validators.pattern(/(.|\s)*\S(.|\s)*/), Validators.maxLength(440)])],
+      description: ['', Validators.compose([Validators.required, Validators.pattern(/(.|\s)*\S(.|\s)*/), Validators.maxLength(2000)])],
       author: ['', Validators.compose([formsValidation.verificarCampoVazio, Validators.maxLength(30)])],
       module: ['', [formsValidation.verificarCampoVazio]],
       date: Date.now().toString(),

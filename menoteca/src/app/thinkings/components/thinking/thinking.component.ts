@@ -5,7 +5,6 @@ import * as fromThinkingAction from '../../redux/action';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ModalViewThinkingComponent } from '../../modals/modal-view-thinking/modal-view-thinking.component';
 
 @Component({
   selector: 'app-thinking',
@@ -34,8 +33,7 @@ export class ThinkingComponent implements OnInit {
 
   seeThinking(thinking: ThinkingModel) {
     this.store$.dispatch(fromThinkingAction.LoadThinkingSuccess({ payload: thinking }));
-
-    this.dialog.open(ModalViewThinkingComponent);
+    this.route.navigate(['/list-thinking/view']);
   }
 
   editThinking(thinking: ThinkingModel) {
@@ -46,7 +44,7 @@ export class ThinkingComponent implements OnInit {
   }
 
   deleteThinking(thinking: ThinkingModel) {
-    const modal = this.dialog.open(ModalRemoveComponent, { width: '320px' });
+    const modal = this.dialog.open(ModalRemoveComponent, { width: '350px' });
 
     modal.componentInstance.thinking = thinking;
   }

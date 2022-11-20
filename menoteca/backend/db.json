@@ -62,6 +62,24 @@
       "date": "1668971054425",
       "update": true,
       "favorite": false
+    },
+    {
+      "id": 10,
+      "description": "t - for classes that set margin-top or padding-top\nb - for classes that set margin-bottom or padding-bottom\ns - (start) for classes that set margin-left or padding-left in LTR, margin-right or padding-right in RTL\ne - (end) for classes that set margin-right or padding-right in LTR, margin-left or padding-left in RTL\nx - for classes that set both *-left and *-right\ny - for classes that set both *-top and *-bottom\nblank - for classes thgg",
+      "author": "gggggggggg",
+      "module": "modelo2",
+      "date": "1668972010640",
+      "update": false,
+      "favorite": false
+    },
+    {
+      "id": 11,
+      "description": "t - for classes that set margin-top or padding-top\nb - for classes that set margin-bottom or padding-bottom\ns - (start) for classes that set margin-left or padding-left in LTR, margin-right or padding-right in RTL\ne - (end) for classes that set margin-right or padding-right in LTR, margin-left or padding-left in RTL\nx - for classes that set both *-left and *-right\ny - for classes that set both *-top and *-bottom\nblank - for classes that set a margin or padding on all 4 sides of the element\nt - for classes that set margin-top or padding-top\nb - for classes that set margin-bottom or padding-bottom\ns - (start) for classes that set margin-left or padding-left in LTR, margin-right or padding-right in RTL\ne - (end) for classes that set margin-right or padding-right in LTR, margin-left or padding-left in RTL\nx - for classes that set both *-left and *-right\ny - for classes that set both *-top and *-bottom\nblank - for classes that set a margin or padding on all 4 sides of the element\nt - for classes that set margin-top or padding-top\nb - for classes that set margin-bottom or padding-bottom\ns - (start) for classes that set margin-left or padding-left in LTR, margin-right or padding-right in RTL\ne - (end) for classes that set margin-right or padding-right in LTR, margin-left or padding-left in RTL\nx - for classes that set both *-left and *-right\ny - for classes that set both *-top and *-bottom\nblank - for classes that set a margin or padding on all 4 sides of the element\nt - for classes that set margin-top or padding-top\nb - for classes that set margin-bottom or padding-bottom\ns - (start) for classes that set margin-left or padding-left in LTR, margin-right or padding-right in RTL\ne - (end) for classes that set margin-right or padding-right in LTR, margin-left or padding-left in RTL\nx - for classes that set both *-left and *-right\ny - for classes that set both *-top and *-bottom\nblank - for classes that set a margin or padding on all 4 sides of the element\nt - for clas vvvv vv",
+      "author": "hhhshhhsah",
+      "module": "modelo3",
+      "date": "1668973045334",
+      "update": false,
+      "favorite": false
     }
   ]
 }
