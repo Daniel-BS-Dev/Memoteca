@@ -7,7 +7,7 @@ const _thinkingReducer = createReducer(
   on(formThinkingActions.LoadThinkingsSuccess, (state, { payload, loading }) => ({
     ...state,
     thinkings: [...payload].reverse(),
-    loading,
+    loading
   })),
 
   on(formThinkingActions.LoadThinkingsFail, (state, { error }) => ({

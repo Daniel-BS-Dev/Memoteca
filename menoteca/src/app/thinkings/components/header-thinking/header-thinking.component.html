@@ -1,8 +1,16 @@
 <header class="container-header">
-  <h2 class="ff-inter title">Meu Mural</h2>
-  <div class="container-input">
-    <input autofocus type="text" placeholder="O que você esta procurando?" [formControl]="inputFilter">
-    <img src="../../../../assets/images/lupa.png">
-  </div>
-  <button (click)="addThinking()" class="button">Adicionar novo pensamento</button>
+  <section class="container-title">
+    <h2 class="ff-inter title">{{ changeTitle ? 'Meus Favoritos' : 'Meu Mural' }}</h2>
+  </section>
+  <section class="container-buttons">
+    <button (click)="toGoMural()" class="button">Meu Mural</button>
+    <button (click)="toGofavorite()" class="button">Meus Favoritos</button>
+    <button (click)="addThinking()" class="button">Adicionar novo pensamento</button>
+  </section>
+  <section class="container-search">
+    <div class="container-input">
+      <input autofocus type="text" placeholder="O que você esta procurando?" [formControl]="inputFilter">
+      <img src="../../../../assets/images/lupa.png">
+    </div>
+  </section>
 </header>

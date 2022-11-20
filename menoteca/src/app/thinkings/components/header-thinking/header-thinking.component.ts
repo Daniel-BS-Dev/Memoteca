@@ -13,8 +13,12 @@ import { ClearForm } from '../../redux/action';
 export class HeaderThinkingComponent implements OnInit {
 
   @Output() searchName = new EventEmitter();
+  @Output() allFavorite = new EventEmitter();
+  @Output() allthinking = new EventEmitter();
   inputFilter = new FormControl('');
   describe$ = new Subject();
+
+  changeTitle: boolean = false;
 
   constructor(private store$: Store, private route: Router) { }
 
@@ -29,8 +33,19 @@ export class HeaderThinkingComponent implements OnInit {
 
   filterInput() {
     this.inputFilter.valueChanges.pipe(takeUntil(this.describe$)).subscribe((filter: any) => {
-      this.searchName.emit(filter);
+      this.searchName.emit(filter.trim());
     });
+  }
+
+  toGofavorite = () => {
+    this.changeTitle = true;
+    this.allFavorite.emit(true);
+
+  }
+
+  toGoMural() {
+    this.changeTitle = false;
+    this.allthinking.emit(true);
   }
 
   ngOnDestroy(): void {

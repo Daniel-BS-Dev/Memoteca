@@ -10,11 +10,24 @@ export const getAllThinkings = createSelector(
   (state: ThinkingState) => state.thinkings
 );
 
+export const getAllFavoriteThinkings = createSelector(
+  getThinkingsfeatureState,
+  (state: ThinkingState) => state.thinkings.filter(el => el.favorite == true)
+);
+
 export const filterThinkings = createSelector(
   getThinkingsfeatureState,
   (state: ThinkingState, props: { name: any }) =>
     state.thinkings.filter((el: any) =>
       el.author.toLowerCase().includes(props.name.toLowerCase()))
+);
+
+export const filterFavoriteThinkings = createSelector(
+  getThinkingsfeatureState,
+  (state: ThinkingState, props: { name: any }) =>
+    state.thinkings.filter((el: any) =>
+    (el.author.toLowerCase().includes(props.name.toLowerCase())
+      && (el.favorite == true)))
 );
 
 export const pageThinkings = createSelector(

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ThinkingModel } from '../../../models/thinking.model';
 import * as thinkingSelectors from '../../redux/selector';
 import * as thinkingsActions from '../../redux/action';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { first, Observable } from 'rxjs';
 
@@ -17,6 +16,7 @@ export class ListThinkingComponent implements OnInit {
   maxPage: boolean = false;
   minPage: boolean = true;
   filterInput: boolean = false;
+  allFavoriteThinking: boolean = false;
 
   totalThinkingList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.getAllThinkings);
   thinkingsList$: Observable<ThinkingModel[]> = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage });
@@ -24,20 +24,45 @@ export class ListThinkingComponent implements OnInit {
 
   constructor(private store$: Store) { }
 
-  ngOnInit(): void {
+   async ngOnInit() {
     this.store$.dispatch(thinkingsActions.Loading({ payload: false }));
     this.store$.dispatch(thinkingsActions.LoadThinkings());
     this.filterInput = false;
   }
 
   filter = (campo: any) => {
-    if(!campo) {
+    if (!campo && !this.allFavoriteThinking) {
       this.thinkingsList$ = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage });
       return;
     }
 
-    this.thinkingsList$ = this.store$.select(thinkingSelectors.filterThinkings, { name: campo.trim() });
+    if (!campo && this.allFavoriteThinking) {
+      this.thinkingsList$ = this.store$.select(thinkingSelectors.getAllFavoriteThinkings);
+      return;
+    }
+
+    if (this.allFavoriteThinking) {
+      this.thinkingsList$ = this.store$.select(thinkingSelectors.filterFavoriteThinkings, { name: campo });
+      this.filterInput = true;
+      return;
+    }
+
+    this.thinkingsList$ = this.store$.select(thinkingSelectors.filterThinkings, { name: campo });
     this.filterInput = true;
+  }
+
+  allThikingFavorite(value: any) {
+    if (!value) return;
+
+    this.allFavoriteThinking = value;
+    this.thinkingsList$ = this.store$.select(thinkingSelectors.getAllFavoriteThinkings);
+  }
+
+  allThinking(value: any) {
+    if (!value) return;
+
+    this.allFavoriteThinking = !value;
+    this.thinkingsList$ = this.store$.select(thinkingSelectors.pageThinkings, { total: this.currentPage });
   }
 
   loadingMore() {
