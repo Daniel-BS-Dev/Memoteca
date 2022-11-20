@@ -51,9 +51,10 @@ export class ListThinkingComponent implements OnInit {
     this.filterInput = true;
   }
 
-  allThikingFavorite(value: any) {
+  allThinkingFavorite(value: any) {
     if (!value) return;
 
+    console.log(value)
     this.allFavoriteThinking = value;
     this.thinkingsList$ = this.store$.select(thinkingSelectors.getAllFavoriteThinkings);
   }
